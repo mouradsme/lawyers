@@ -4,7 +4,7 @@
         "use": "@natanffs/vercel-python-wsgi",
         "config": { 
             "maxLambdaSize": "15mb",
-            "runtime": "python3.6"
+            "runtime": "python3.9"
             }
     }],
     "routes": [
