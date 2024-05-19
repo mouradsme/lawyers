@@ -1,0 +1,171 @@
+{% extends "users/base3.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire d'Inscription Réactif | CodingLab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block content %}
+    <style>
+       
+
+        .exit-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 3px 5px;
+            border-radius: 5px;
+        }
+
+        .container2
+         {
+            width: 60%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            position: relative;
+            text-align: right;
+            margin-top: 0.5%;
+            margin-bottom: 2%;
+        }
+
+        .details {
+            margin-right: 0px;
+            margin-left: auto;
+            text-align: right;
+            color: #000;
+        }
+
+        .input-box {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 20px;
+            justify-content: flex-end;
+            border-radius: 20px;
+        }
+
+        .input1 {
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            border: 1px solid #000;
+            color: #a0d18c;
+            width: 250px;
+            height: 30px;
+            padding-left: 20px;
+        }
+
+        input[type=text]:focus {
+            outline: none;
+            border: 1px solid #a0d18c;
+            color: #000;
+        }
+
+        .input-box input {
+            width: 70%;
+            margin-right: 100px;
+        }
+
+        .button {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        .button input[type="submit"] {
+            background-color: #336699;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .button input[type="submit"]:hover {
+            background-color: #265282;
+        }
+    </style>
+    </head>
+
+    <body>
+
+        <div class="container2">
+            <a class="exit-button" href="{% url 'Clients' %}" target="_blank">X</a>
+            <p style="font-size: 18px; color: #336699; font-weight: bold;"> : المعلومات الشخصية </p>
+
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.errors }}
+
+
+                <div class="input-box">
+                    <input class="input1" type="text" placeholder="ادخل الاسم " id="Prenom" name="Prenom" required
+                        style="text-align: right;">
+                    <span class="details">: الاسم </span>
+                </div>
+
+                <div class="input-box">
+                    <input class="input1" type="text" placeholder="ادخل اللقب" id="Nom" name="Nom" required
+                        style="text-align: right;">
+                    <span class="details"> : اللقب </span>
+                </div>
+
+                <div class="input-box">
+                    <input class="input1" type="date" placeholder=" ادخل تاريخ الميلاد     " id="date" name="date"
+                        required style="text-align: right;">
+                    <span class="details">: تاريخ الميلاد </span>
+                </div>
+
+                <div class="input-box">
+                    <input class="input1" type="text" placeholder="ادخل البريد الالكتروني" id="email" name="email"
+                        required style="text-align: right;">
+                    <span class="details"> : البريد الالكتروني</span>
+                </div>
+
+                <div class="input-box">
+                    <input class="input1" type="text" placeholder=" ادخل رقم الهاتف" id="Numero" name="Numero"
+                        required style="text-align: right;">
+                    <span class="details">: رقم الهاتف</span>
+                </div>
+
+                <div class="input-box">
+                    <input class="input1" type="text" placeholder=" ادخل العنوان " id="adresse" name="adresse"
+                        required style="text-align: right;">
+                    <span class="details"> : العنوان </span>
+                </div>
+                <p style="font-size: 18px; color: #336699; font-weight: bold;"> : معلومات بطاقة التعريف الوطنية</p>
+                <div class="input-box">
+                    <input class="input1" type="text" placeholder="ادخل رقم بطاقة التعريف الوطنية " id="carte" name="carte"
+                        style="text-align: right;">
+                    <span class="details">: رقم البطاقة </span>
+                </div>
+
+                <div class="input-box">
+                    <input class="input1" type="date" placeholder=" ادخل تاريخ انتهاء بطاقة التعريف الوطنية     " id="cdate"
+                        name="cdate" style="text-align: right;">
+                    <span class="details">: تاريخ انتهاء صلاحية البطاقة </span>
+                </div>
+                <div class="button">
+                    <input type="submit" value="تسجيل">
+                </div>
+            </form>
+        </div>
+
+        
+    </body>
+</html>
+{% include 'users/footer.html' %}
+{% endblock content %}

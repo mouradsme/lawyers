@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Page</title>
+    <style>
+        body {
+            font-family: 'Dejavu', Arial, sans-serif;
+            margin: 0;
+        }
+
+        .cont1 {
+            padding: 0px;
+            text-align: center;
+            margin: 0 auto; /* Centers the div horizontally */
+            margin-top: 20vh; /* Moves the div down by half of the viewport height */
+            transform: translateY(-50%); /* Centers the div vertically */
+        }
+
+        .cont2 {
+            border: 1px solid #ccc;
+            padding: 25px;
+            text-align: center;
+            margin: 0 auto; /* Centers the div horizontally */
+            margin-top: 25vh; /* Moves the div down by half of the viewport height */
+            transform: translateY(-50%);
+        }
+
+       
+        .bold-text {
+            font-weight: bold;
+        }
+
+        /* Hide print button when printing */
+        @media print {
+            .print-button {
+                display: none;
+            }
+        }
+
+        .print-button {
+            background-color: #1783dc; /* Blue background */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: block; /* Change display to block */
+            margin: 0 auto; /* Center button horizontally */
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cont1">
+        <p class="bold-text">وصل استلام دفعة من المبلغ الاجمالي للقضية</p>
+    </div>
+    <div class="cont2">
+        <div class="cont3">
+            <p class="bold-text">من السيد: {{ affaire.Nclient }}</p>
+            <p class="bold-text">  {{ paiement.date }}: تاريخ و توقيت الدفع </p>
+            <p class="bold-text"> DA المبلغ الاجمالي للقضية: {{ affaire.budjet }} </p>
+            <p class="bold-text"> DA قيمة الدفعة: {{ paiement.versement }}</p>
+        </div>
+    
+        
+    </div>
+
+        <!-- Print button -->
+        <div class="cont3">
+            <button class="print-button" onclick="printPage()">طباعة</button>
+        </div>
+    </div>
+
+    <!-- JavaScript function to print the page -->
+    <script>
+        function printPage() {
+            window.print();
+        }
+    </script>
+</body>
+
+</html>

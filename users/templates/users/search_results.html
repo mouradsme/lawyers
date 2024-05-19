@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <p>Showing results for "{{ query }}":</p>
+    <ul>
+        {% for lawyer in lawyers %}
+            <li>{{ lawyer.username }}</li>
+        {% endfor %}
+        <li>
+            
+                {% csrf_token %}
+                
+                <input type="hidden" name="recipient" value="{{ lawyer.username }}">
+                <a href="{% url 'message_form' %}">  <button type="submit" class="btn btn-primary btn-sm">Send Message</button></a>
+                                </form>
+        </li>
+    </ul>
+</body>
+</html>

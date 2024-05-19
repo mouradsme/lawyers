@@ -1,0 +1,107 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+<div class="container" dir="rtl">
+    <h2>اختر خطة الاشتراك الخاصة بك</h2>
+    <p>اختر الخطة التي تناسب احتياجاتك بشكل أفضل:</p>
+</div>
+
+<div id="pricing" class="section md-padding">
+    <div class="container">
+        <div class="row">
+            <div class="section-header text-center">
+                <h2 class="title">جدول التسعير</h2>
+            </div>
+
+            {% for plan in subscription_plans %}
+            <div class="col-sm-4">
+                <div class="pricing">
+                    <div class="price-head">
+                        <span class="price-title">{{ plan.name }}</span>
+                        <div class="price">
+                            <h3>{{ plan.price }}Da<span class="duration"></span></h3>
+                        </div>
+                    </div>
+                    <ul class="price-content">
+                        <li>
+                            <p>{{ plan.description }}</p>
+                        </li>
+                    </ul>
+                    <div class="price-btn">
+                        <form method="post" action="{% url 'subscribe' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="subscription_plan" value="{{ plan.name }}">
+                            <button class="outline-btn">اشترِ الآن</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% if remaining_time %}
+            <p>Remaining time:</p>
+            <p id="remaining-time">{{ remaining_time }}</p> <!-- Display remaining time -->
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+    .pricing .price h3 {
+        font-size: 22px;
+        margin: 0px;
+        -webkit-transition: 0.2s color;
+        transition: 0.2s color;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        top: 50%;
+        position: absolute;
+        right: 0;
+        left: 0;
+    }
+    .navbar-brand .logo, .navbar-brand .logo-alt {
+    max-height: 198px;
+    display: block;
+    margin-top: -20%;
+}
+
+</style>
+<script>
+
+  // Function to update remaining time
+  function updateRemainingTime() {
+        // Fetch the remaining time element
+        const remainingTimeElement = document.getElementById('remaining-time');
+        
+        // Fetch the remaining time string from the element
+        const remainingTimeStr = remainingTimeElement.innerText;
+        
+        // Convert the remaining time string to an array of numbers [days, hours, minutes, seconds]
+        const remainingTimeArray = remainingTimeStr.split(',').map(str => parseInt(str.trim()));
+        
+        // Update the remaining time
+        remainingTimeArray[3]--; // Decrement seconds
+        
+        // Update minutes and hours if seconds become negative
+        if (remainingTimeArray[3] < 0) {
+            remainingTimeArray[3] = 59; // Reset seconds
+            remainingTimeArray[2]--; // Decrement minutes
+            if (remainingTimeArray[2] < 0) {
+                remainingTimeArray[2] = 59; // Reset minutes
+                remainingTimeArray[1]--; // Decrement hours
+                if (remainingTimeArray[1] < 0) {
+                    remainingTimeArray[1] = 23; // Reset hours
+                    remainingTimeArray[0]--; // Decrement days
+                }
+            }
+        }
+        
+        // Format the remaining time string and update the element
+        const updatedRemainingTime = `${remainingTimeArray[0]} days, ${remainingTimeArray[1]} hours, ${remainingTimeArray[2]} minutes, ${remainingTimeArray[3]} seconds`;
+        remainingTimeElement.innerText = updatedRemainingTime;
+    }
+
+    // Call the updateRemainingTime function every second (1000 milliseconds)
+    setInterval(updateRemainingTime, 1000);
+</script>
+{% endblock %}

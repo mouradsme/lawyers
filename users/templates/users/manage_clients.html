@@ -1,0 +1,107 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة العملاء</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            
+            text-align: right; /* Text alignment */
+        }
+        .container1 {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: right; /* Text alignment */
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: right; /* Text alignment */
+        }
+        li {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .client-info {
+            margin-bottom: 10px;
+        }
+        .message {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container1">
+        <h1>إدارة العملاء</h1>
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            {% if potential_clients %}
+                <ul>
+                    {% for client in potential_clients %}
+                        {% if client.lawyer_clients.all.count == 0 %}
+                            <!-- عرض العملاء الذين لم يتم قبولهم بعد -->
+                            <li>
+                                <div class="client-info">
+                                    <input type="checkbox" name="selected_clients" value="{{ client.id }}">
+                                    {{ client.username }} - {{ client.email }} <!-- عرض أي معلومات ذات صلة بالعميل -->
+                                </div>
+                                <!-- عرض أول رسالة للعملاء الذين لم يتم قبولهم بعد -->
+                                {% with client.sent_messages.first as first_message %}
+                                    {% if first_message %}
+                                        <div class="message">
+                                            <p>{{ first_message.content }}</p>
+                                        </div>
+                                    {% endif %}
+                                {% endwith %}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <button type="submit">قبول العملاء المحددين</button>
+            {% else %}
+                <p>لا تتوفر عملاء محتملين.</p>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>
+
+{% endblock content %}

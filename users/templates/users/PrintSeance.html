@@ -1,0 +1,105 @@
+
+    <style>
+     
+
+        body {
+            font-family: 'Dejavu', Arial, sans-serif;
+            margin: 0;
+        }
+
+        .cont1 {
+            padding: 5px;
+            text-align: center;
+            margin: 0 auto; /* Centers the div horizontally */
+            margin-top: 5vh; /* Moves the div down by half of the viewport height */
+            transform: translateY(-50%); /* Centers the div vertically */
+        }
+
+        .cont2 {
+           
+         
+            text-align: right;
+            margin: 0 auto; /* Centers the div horizontally */
+            margin-right: 25vh; /* Moves the div down by half of the viewport height */
+            
+        }
+
+        .cont3 {
+            
+            text-align: right;
+            margin-right: 25vh;
+           
+        }
+        .cont4 {
+            
+            text-align: right;
+            margin-right: 30vh;
+           
+        }
+
+        .bold-text {
+            font-weight: bold;
+        }
+
+        /* Hide print button when printing */
+        @media print {
+            .print-button {
+                display: none;
+            }
+        }
+
+        .print-button {
+            background-color: #1783dc; /* Blue background */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: block; /* Change display to block */
+            margin: 0 auto; /* Center button horizontally */
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+    </style>
+<div class="cont1">
+    <p class="bold-text">الجمهورية الجزائرية الديمقراطية الشعبية</p>
+</div>
+<div  class="cont2">
+    <p class="bold-text">مجلس قضاء / محكمة: {{ affaire.tribunal_associated.name }}</p>
+    <p class="bold-text">القسم / للغرفة: {{ affaire.taffaire }}</p>
+    <p class="bold-text">قضية رقم: {{ affaire.Naff }}</p>
+</div>
+
+<!-- Assuming you want to display details of related seances for each affair -->
+<div class="cont3">
+<div>
+    <p class="bold-text"> {{ seance.date }} :تاريخ و توقيت الجلسة </p>
+</div>
+
+<div>
+    <p class="bold-text">الموضوع: {{ seance.titre }}</p>
+</div>
+</div>
+
+<div class="cont4">
+    <p class="bold-text">يطيب لنا أن نتقدم إلى سيادتكم الموقرة بقبول تأسيسنا للدفاع عن حقوق :</p>
+    <p>ضد: {{ affaire.Nclient }}</p>
+    <p>ضد: {{ affaire.adversaire }}</p>
+</div>
+
+<div class="cont4">
+    <p class="bold-text">تقبلوا فائق التقدير والاحترام</p>
+</div>
+
+    <!-- Print button -->
+    <button class="print-button" onclick="printPage()">Print</button>
+
+    <!-- JavaScript function to print the page -->
+    <script>
+        function printPage() {
+            window.print();
+        }
+    </script>
+   
+</html>

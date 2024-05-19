@@ -1,0 +1,286 @@
+{% load static %}
+{% block content %}
+<div class="conversation-header">
+    <h2 class="conversation-title">المحادثة مع {{ sender.username }}</h2>
+    <a href="{% url 'inbox' %}" class="btn return-btn">العودة إلى صندوق الوارد</a>
+</div>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحادثة مع {{ sender.username }}</title>
+    <!-- Link Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'static/css/font-awesome.min.css' %}">
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+    <style>
+        /* Custom styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin-bottom: 100px; /* إضافة هامش أسفل لنموذج الرسالة الثابت */
+        }
+        .header {
+            background-color: #fff; /* تعيين لون الخلفية إلى الأبيض */
+            color: #000; /* تعيين لون النص إلى الأسود */
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* إضافة ظل */
+        }
+        .logo {
+            float: right;
+            max-height: 40px; /* ضبط الارتفاع حسب الحاجة */
+        }
+        .container {
+            margin-top: 80px; /* ضبط الهامش العلوي لإتاحة المساحة للعنوان الثابت */
+            max-height: 70vh; /* ضبط الارتفاع الأقصى حسب الحاجة */
+            overflow-y: auto; /* إضافة شريط تمرير عمودي */
+        }
+        .container1 {
+            margin-top: 20px; /* إضافة هامش أعلى بين الحاويتين */
+        }
+        .conversation-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .return-btn {
+            background-color: #007bff;
+           
+        }
+        .return-btn:hover {
+            background-color: #0056b3;
+        }
+        .list-group-item {
+            direction: rtl;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            background-color: #fff;
+        }
+        .list-group-item strong {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .message-content {
+            margin-top: 5px;
+            color: #333;
+        }
+        .delete-btn:hover {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        #container1 {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 58%;
+            max-width: 2240px;
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+        #messageContent {
+            resize: none;
+        }
+        #sendButton {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+        #sendButton:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .principalcontainer1{ 
+        width: 80%;
+        margin-right: 20px;
+        margin-left: 60px;
+    
+    
+    
+    
+      }
+    </style>
+    <style>
+        /* Custom styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin-bottom: 100px; /* إضافة هامش أسفل لنموذج الرسالة الثابت */
+        }
+        .header {
+            background-color: #fff; /* تعيين لون الخلفية إلى الأبيض */
+            color: #000; /* تعيين لون النص إلى الأسود */
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* إضافة ظل */
+        }
+        .logo {
+            float: right;
+            max-height: 40px; /* ضبط الارتفاع حسب الحاجة */
+        }
+        .container {
+            margin-top: 80px; /* ضبط الهامش العلوي لإتاحة المساحة للعنوان الثابت */
+            max-height: 70vh; /* ضبط الارتفاع الأقصى حسب الحاجة */
+            overflow-y: auto; /* إضافة شريط تمرير عمودي */
+        }
+   
+        .conversation-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .return-btn {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .return-btn:hover {
+            background-color: #0056b3;
+        }
+        .list-group-item {
+            direction: rtl;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            background-color: #fff;
+        }
+        .list-group-item strong {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .message-content {
+            margin-top: 5px;
+            color: #333;
+        }
+       
+        .delete-btn:hover {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        #messageForm {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 58%;
+            max-width: 2240px;
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+            z-index: 1;
+        }   
+        #messageContent {
+            resize: none;
+        }
+        #sendButton {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+        #sendButton:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .conversation-header{
+            position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 2240px;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    z-index: 1;
+    /* margin: -80px; */
+    top: 0;
+
+
+        }
+    </style>
+</head>
+<body>
+
+    <div class="conversation-header">
+        <h2 class="conversation-title">المحادثة مع {{ sender.username }}</h2>
+        <a href="{% url 'inbox' %}" class="btn return-btn">العودة إلى صندوق الوارد</a>
+    </div>
+    
+    <div class="container">
+        <ul class="list-group">
+            {% for message in messages %}
+                <li class="list-group-item {% if message.sender_id == request.user %}text-right{% endif %}">
+                    {% if message.sender_id == request.user %}
+                        <strong>أنت:</strong>
+                    {% else %}
+                        <strong>{{ sender.username }}:</strong>
+                    {% endif %}
+                    <div class="message-content">{{ message.content }}</div>
+                    {% if message.file %}
+                        <div>
+                            <a href="{{ message.file.url }}" download>{{ message.file.name }}</a>
+                        </div>
+                    {% endif %}
+                    {% if message.sender_id == request.user %}
+                        <form method="post" action="{% url 'delete_message' message_id=message.id %}" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm delete-btn ml-2"><i class="fa-solid fa-trash-can"></i></button>
+                        </form>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <form id="messageForm" method="post" enctype="multipart/form-data" action="{% url 'send_message' sender_id=sender.id %}">
+        {% csrf_token %}
+        <div class="form-group">
+            <textarea id="messageContent" name="content" class="form-control" rows="3" placeholder="اكتب رسالتك هنا"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="file">تحميل الملف</label>
+            <input type="file" id="file" name="file">
+        </div>
+        <button id="sendButton" type="submit" class="btn btn-primary" disabled>إرسال</button>
+    </form>
+    
+    <!-- Include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#messageContent').on('input', function() {
+                // Enable/disable send button based on input content
+                if ($(this).val().trim() !== '') {
+                    $('#sendButton').prop('disabled', false);
+                } else {
+                    $('#sendButton').prop('disabled', true);
+                }
+            });
+        });
+    </script>
+{% endblock content %}

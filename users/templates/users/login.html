@@ -1,0 +1,169 @@
+{% extends "users/base.html" %}
+{% block title %} صفحة تسجيل الدخول {% endblock title %}
+{% block content %}
+   <!-- <div class="form-content my-3 p-3">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="card shadow-lg border-0 rounded-lg mt-0 mb-3">
+                        <div class="card-header justify-content-center">
+                          <h3 class="font-weight-light my-1 text-center">تسجيل الدخول</h3>
+                        </div>
+                        {% if form.errors %}
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <div id="form_errors">
+                                    {% for key, value in form.errors.items %}
+                                        <strong>{{ value }}</strong>
+                                    {% endfor %}
+                                </div>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endif %}
+                        <div class="card-body">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <div class="form-group">
+                                            <a href="{% url 'social:begin' 'github' %}"
+                                                   class="btn btn-link btn-lg active btn-block">تسجيل الدخول بواسطة جيثوب</a>
+                                            <a href="{% url 'social:begin' 'google-oauth2' %}"
+                                                   class="btn btn-link btn-lg active btn-block">تسجيل الدخول بواسطة جوجل</a>
+                                            <hr>
+                                            <p class="text-center"><strong>أو</strong></p>
+                                            <hr>
+                                            <label class="small mb-1">اسم المستخدم</label>
+                                            {{ form.username }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <div class="form-group">
+                                          <label class="small mb-1">كلمة المرور</label>
+                                          {{ form.password }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <div class="form-group">
+                                             Add a Remember me functionality 
+                                            {{ form.remember_me }}
+                                            <label> تذكرني</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-10 offset-md-1">
+                                        <div class="form-group mt-0 mb-1">
+                                          <button name="login" class="col-md-12 btn btn-dark" id="login">تسجيل الدخول</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer text-center">
+                            <div class="small">
+                                <a href="{% url 'users-register' %}">ليس لديك حساب بعد؟ انتقل إلى التسجيل</a><br>
+                                <a href="{% url 'password_reset' %}"><i>نسيت كلمة المرور؟</i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>-->
+     <!---------------------------------------------------------------------------------------------------------->
+     <!-- Contact -->
+	<div id="contact" class="section md-padding">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Section-header -->
+				<div class="section-header text-center">
+					<h2 class="title">تسجيل الدخول</h2>
+				</div>
+				<!-- /Section-header -->
+
+				<!-- contact 
+				<div class="col-sm-4">
+					<div class="contact">
+						<i class="fa fa-phone"></i>
+						<h3>Phone</h3>
+						<p>512-421-3940</p>
+					</div>
+				</div>
+				 /contact -->
+
+				<!-- contact -->
+				
+				<!-- /contact -->
+
+				<!-- contact 
+				<div class="col-sm-4">
+					<div class="contact">
+						<i class="fa fa-map-marker"></i>
+						<h3>Address</h3>
+						<p>1739 Bubby Drive</p>
+					</div>
+				</div>-->
+				<!-- /contact -->
+
+				<!-- contact form -->
+                {% if form.errors %}
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div id="form_errors">
+                        {% for key, value in form.errors.items %}
+                            <strong>{{ value }}</strong>
+                        {% endfor %}
+                    </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+				<div class="col-md-8 col-md-offset-2">
+					<form method="POST" class="contact-form">
+                        {% csrf_token %}
+				<!--		<a href="{% url 'social:begin' 'github' %}"
+                                                  </a> class="btn btn-link btn-lg active btn-block">تسجيل الدخول بواسطة جيثوب</a>
+                                    -->        <a href="{% url 'social:begin' 'google-oauth2' %}"
+                                                   class="btn btn-link btn-lg active btn-block">تسجيل الدخول بواسطة جوجل</a>
+                                            <hr>
+                                            <p class="text-center"><strong>أو</strong></p>
+                                            <hr>
+                                            <label class="small mb-1">اسم المستخدم</label>
+                                            {{ form.username }}
+						<label class="small mb-1">كلمة المرور</label>
+                                          {{ form.password }}
+				
+                        {{ form.remember_me }}
+                        <label> تذكرني</label>
+                        <hr>
+                        <button name="login" class="col-md-12 btn btn-dark" id="login">تسجيل الدخول</button>
+                        <a href="{% url 'home2' %}">ليس لديك حساب بعد؟  انشأ حساب  </a><br>
+                        <a href="{% url 'password_reset' %}">نسيت كلمة المرور؟</a>
+                   
+                    </form>
+                    
+				</div>
+				<!-- /contact form -->
+               
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</div>
+	<!-- /Contact -->
+
+{% endblock content %}

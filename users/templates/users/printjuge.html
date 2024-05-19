@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Page</title>
+    <style>
+        body {
+            font-family: 'Dejavu', Arial, sans-serif;
+            margin: 0;
+        }
+
+        .cont1 {
+            padding: 5px;
+            text-align: center;
+            margin: 0 auto; /* Centers the div horizontally */
+            margin-top: 5vh; /* Moves the div down by half of the viewport height */
+            transform: translateY(-50%); /* Centers the div vertically */
+        }
+
+        .cont2 {
+            border: 1px solid #ccc;
+            padding: 25px;
+            text-align: center;
+            margin: 0 auto; /* Centers the div horizontally */
+            margin-top: 25vh; /* Moves the div down by half of the viewport height */
+            transform: translateY(-50%);
+        }
+
+        .cont3 {
+            padding: 2px;
+            text-align: right;
+            margin: 0 auto; /* Centers the div horizontally */
+            margin-top: 0vh; /* Moves the div down by half of the viewport height */
+            /* Centers the div vertically */
+        }
+
+        .bold-text {
+            font-weight: bold;
+        }
+
+        /* Hide print button when printing */
+        @media print {
+            .print-button {
+                display: none;
+            }
+        }
+
+        .print-button {
+            background-color: #1783dc; /* Blue background */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: block; /* Change display to block */
+            margin: 0 auto; /* Center button horizontally */
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cont1">
+        <p class="bold-text">الجمهورية الجزائرية الديمقراطية الشعبية</p>
+    </div>
+    <div class="cont2">
+        <div class="cont3">
+            <p class="bold-text">مجلس قضاء / محكمة: {{ affaire.tribunal_associated.name }}</p>
+            <p class="bold-text">القسم / للغرفة: {{ affaire.taffaire }}</p>
+            <p class="bold-text">قضية رقم: {{ affaire.Naff }}</p>
+            <p class="bold-text">تاريخ القيد: {{ affaire.date }}</p>
+        </div>
+
+        <!-- Assuming you want to display details of related seances for each affair -->
+        <div class="cont3">
+            <p class="bold-text">يطيب لنا أن نتقدم إلى سيادتكم الموقرة بقبول تأسيسنا للدفاع عن حقوق :</p>
+            <p>لصالح الموكل : {{ affaire.Nclient }}</p>
+            <p>ضد الخصم : {{ affaire.adversaire }}</p>
+        </div>
+
+        <div class="cont3">
+            <p class="bold-text"> تحت عنوان : {{ affaire.sujet }} </p>
+        </div>
+
+        <div class="cont3">
+            <p class="bold-text">تقبلوا فائق التقدير والاحترام</p>
+        </div>
+        <!-- Print button -->
+        <div class="cont3">
+            <button class="print-button" onclick="printPage()">طباعة</button>
+        </div>
+    </div>
+
+    <!-- JavaScript function to print the page -->
+    <script>
+        function printPage() {
+            window.print();
+        }
+    </script>
+</body>
+
+</html>

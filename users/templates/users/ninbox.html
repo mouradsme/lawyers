@@ -1,0 +1,30 @@
+{% extends "users/notrbase.html" %}
+{% block content %}
+<!-- inbox.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox</title>
+    <!-- Link Bootstrap CSS -->
+    
+    <style>
+        /* Add your custom CSS here if needed */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-4 mb-3">Inbox</h2>
+        <ul class="list-group">
+            {% for sender in senders %}
+            <li class="list-group-item d-flex align-items-center">
+                <img src="{{ sender.profile.avatar.url }}" class="rounded-circle mr-3" width="50" height="50" alt="{{ sender.username }}'s profile picture">
+                <a href="{% url 'conversation' sender_id=sender.id %}" class="flex-grow-1">{{ sender.username }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+{% endblock content %}

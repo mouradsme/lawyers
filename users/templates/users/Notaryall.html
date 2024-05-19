@@ -1,0 +1,247 @@
+
+
+
+
+
+
+
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block title %} الصفحة الرئيسية {% endblock title%}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <link type="text/css" rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}" />
+    
+    <!-- Owl Carousel -->
+    <link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.carousel.css' %}" />
+    <link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.theme.default.css' %}" />
+
+    <!-- Magnific Popup -->
+    <link type="text/css" rel="stylesheet" href="{% static 'static/css/magnific-popup.css' %}" />
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="{% static 'static/css/font-awesome.min.css' %}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كل المحامين</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container1 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px; /* Adjust maximum width */
+            width: 100%;
+        }
+       
+        .card {
+            max-width: 600px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            margin-bottom: 20px;
+            width: 100%; /* Initially, cards take up full width */
+        }
+        .card-image {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-image img {
+  width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%; /* Make the image round */
+}
+
+        .card-content {
+            flex: 2;
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .card-info {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        /* Media query for responsive layout */
+        @media (min-width: 768px) {
+            .card {
+                width: calc(50% - 20px); /* 2 cards in a row with 20px gap between */
+            }
+        }
+        /* Custom styles for this template */
+
+        /* Styles for fixed search bar */
+        .fixed-search-bar {
+    position: fixed;
+    top: 81px;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+        .search-form {
+            text-align: center;
+        }
+
+        .search-input {
+            width: 60%;
+            max-width: 400px;
+            border-radius: 20px;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        .search-btn {
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed search bar -->
+    <div class="fixed-search-bar">
+        <div class="container">
+            <form id="searchForm" action="{% url 'search_notaries' %}" method="get" class="search-form">
+                <input type="text" id="searchInput" name="query" class="search-input" placeholder="أدخل مجالات الممارسة أو الخبرة أو الموقع">
+                <button type="submit" class="search-btn">بحث</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- /Container -->
+
+    <script type="text/javascript" src="{% static 'static/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'static/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'static/js/owl.carousel.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'static/js/jquery.magnific-popup.js' %}"></script>
+    <script type="text/javascript" src="{% static 'static/js/main.js' %}"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Include jQuery UI -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <style>
+        /* Style for the autocomplete dropdown */
+        .ui-autocomplete {
+            max-height: 200px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            z-index: 1000;
+        }
+        .row {
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-top: 63px;
+}
+
+    </style>
+</head>
+<body>
+
+    
+    <!-- Search Form -->
+    
+    <!-- /Search Form -->
+    
+    <!-- JavaScript to enable autocomplete -->
+    <script>
+        $(document).ready(function() {
+            // Define available tags for autocomplete
+            var availableTags = [
+                "قانون الأسرة",
+                "قانون الجنايات",
+                "القانون التجاري",
+                "قانون العقارات",
+                "قانون الهجرة",
+                // أضف المزيد من مجالات الممارسة هنا
+            ];
+            
+            // Enable autocomplete on the search input
+            $("#searchInput").autocomplete({
+                source: availableTags, // توفير العلامات المتاحة
+                minLength: 1 // عرض الاقتراحات بعد كتابة ما لا يقل عن 1 حرف
+            });
+        });
+    </script>
+    <!-- Display search results if available -->
+ <div class="cont" >
+<div class="container1" style="direction: rtl;">
+
+  {% if notaries  %}
+  {% for notary  in notaries %}
+          <div class="card">
+              {% if notary.profile.avatar %}
+                  <div class="card-image"><img src="{{ notary.profile.avatar.url }}" alt="صورة الملف الشخصي" class="profile-image"></div>
+              {% else %}
+                  <div class="card-image"><img src="{% static 'path/to/default/avatar.jpg' %}" alt="صورة الملف الشخصي" class="profile-image"></div>
+              {% endif %}
+              <div class="card-content">
+                  <h2 class="card-title">{{ notary.first_name }} {{ notary.last_name }}</h2>
+                  <p class="card-info"><strong>الولاية:</strong> {{ notary.practice_areas }}</p>
+                  <p class="card-info"><strong>الهاتف:</strong> {{ notary.phone_number }}</p>
+                  <p class="card-info"><strong>البريد الإلكتروني:</strong> {{ notary.email }}</p>
+                  <p class="card-info"><strong>اسم المستخدم:</strong> {{notary.username}}</p>
+                  <input type="hidden" name="recipient" value="{{ notary.id }}">
+                  <a href="{% url 'message_form' notary.id %}"><button type="button" class="btn btn-primary btn-sm">إرسال رسالة</button></a>
+     
+              </div>
+          </div>
+      {% endfor %}
+  {% else %}
+      <p>لم يتم العثور على نتائج.</p>
+  {% endif %}
+</div></div>
+</body>
+</html>
+
+{% endblock content %}

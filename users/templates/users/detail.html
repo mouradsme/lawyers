@@ -1,0 +1,78 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ news.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            text-align: center; /* توسيط كل المحتوى */
+        }
+        .containern {
+            max-width: 800px;
+            margin: 0 auto; /* توسيط الحاوية */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف */
+            direction: rtl; /* توجيه النص إلى اليمين */
+        }
+        .h1n {
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            text-align: right; /* محاذاة العنوان إلى اليمين */
+        }
+        p {
+            color: #666;
+            margin-bottom: 10px;
+            text-align: right; /* محاذاة النص إلى اليمين */
+        }
+        .imgn {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px; /* إضافة زوايا مستديرة للصور */
+            width: 550px;
+            height: 350px;
+        }
+        .return-btn {
+            display: block;
+            margin: 20px auto; /* توسيط الزر */
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .return-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="containern">
+        <a href="{% url 'home2' %}" class="return-btn">العودة إلى الصفحة الرئيسية</a>
+        <h1 class="h1n">{{ news.title }}</h1>
+        {% if news.photo %}
+            <img class="imgn" src="{{ news.photo.url }}" alt="{{ news.title }}">
+        {% endif %}
+        <p>{{ news.content }}</p>
+        <p>المؤلف: {{ news.author.username }}</p>
+        <p>تاريخ الإنشاء: {{ news.created_at }}</p>
+        <p>تاريخ التحديث: {{ news.updated_at }}</p>
+        
+    </div>
+</body>
+</html>
+{% endblock content %}

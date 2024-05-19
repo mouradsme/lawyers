@@ -1,0 +1,60 @@
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<style>
+    ul.verdict-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    ul.verdict-list li {
+        background-color: #f2f2f2; /* Gray background color */
+        border: 1px solid #ccc; /* Border color */
+        padding: 10px; /* Adjust padding as needed */
+        margin-bottom: 10px;
+    }
+</style>
+<div id="addverdictModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="{% url 'verdict' affaire.id %}">
+
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h4 class="modal-title">إضافة حكم للقضية</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="numaff">رقم القضية</label>
+                        <input type="text" id="numaff" name="numaff" class="form-control" required readonly value="{{ affaire.Naff }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="sdate">تاريخ  اصدار الحكم</label>
+                        <input type="date" id="vdate" name="vdate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sdetail">الحكم </label>
+                        <textarea id="vdetail" name="vdetail" class="form-control" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">الغاء</button>
+                    <input type="submit" class="btn btn-success" value="اضافة">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% if verdicts %}
+<ul class="verdict-list">
+    {% for verdict in verdicts %}
+        <li>
+            <p style="font-weight: bold; color:#13aa52; text-align: center;">
+                تاريخ اصدار الحكم: {{ verdict.date|date:"d/m/Y" }} - <br> الحكم: {{ verdict.detail }} -
+            </p>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p style="font-weight: bold; color: red; text-align: center;">     .   لم يتم تسجيل اي حكم حتى الان         </p>
+{% endif %}
+

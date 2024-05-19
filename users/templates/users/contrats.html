@@ -1,0 +1,144 @@
+{% extends "users/notrbase.html" %}
+{% load static %}
+
+{% block title %} الصفحة الرئيسية {% endblock title%}
+{% block content %}
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}" />
+    
+	<!-- Owl Carousel -->
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.carousel.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.theme.default.css' %}" />
+
+	<!-- Magnific Popup -->
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/magnific-popup.css' %}" />
+
+    <script src="{% static 'fontawesomefree/js/fontawesome.js' %}"></script>
+    <script src="{% static 'fontawesomefree/js/solid.js' %}"></script>
+    <script src="{% static 'fontawesomefree/js/brands.js' %}"></script>
+    <div id="about" class="section md-padding">
+
+		<!-- Container -->
+		<div class="container" >
+			<div class="bg-img" >
+				<style>
+					.bg-img {
+						background-image: url('{% static "static/img/contrats.jpg" %}');
+						
+					}
+	
+	
+				</style>
+				<div class="overlay"></div>
+			</div>
+			<!-- Row -->
+			<div class="section-header text-center">
+					
+                <h3 class="title" style="color: white;">   ابدأ الآن في كتابة عقودك  <br>اختر العقد الذي يناسبك</h3>
+            </div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</div>
+<div class="section md-padding" style="background-color: rgb(255, 255, 255);">
+    <!-- الحاوية -->
+    <div class="container">
+        <!-- الصف -->
+        <div class="row">
+            <!-- رأس القسم -->
+            
+            <!-- /رأس القسم -->
+            <!-- الخدمة -->
+            <a href="{% url 'vente' %}">
+                <div class="col-md-4 col-sm-6">
+                    <div class="service">
+                        <i class="fa-solid fa-building fa-3x"></i>                   <h3>عقد بيع عقار  </h3>
+                   
+                    </div>
+                </div>
+            </a>
+            <!-- /الخدمة -->
+            <!-- الخدمة -->
+            <a href="{% url 'ventecar' %}">
+                <div class="col-md-4 col-sm-6">
+                    <div class="service">
+                        <i class="fa-solid fa-car fa-3x"></i>
+                        <h3> عقد بيع سيارة </h3>
+                        <br>
+                    </div>
+                </div>
+            </a>
+            <!-- /الخدمة -->
+            <a href="">
+            <!-- الخدمة -->
+            <div class="col-md-4 col-sm-6">
+                <div class="service">
+                    <i class="fa-solid fa-down-long fa-3x"></i>
+                    <h3>  عقد تنازل </h3>
+                   
+                </div>
+            </div>
+            </a>
+            <!-- /الخدمة -->
+            <a href="{% url 'dette' %}">
+            <!-- الخدمة -->
+            <div class="col-md-4 col-sm-6">
+                <div class="service">
+                    <i class="fa-solid fa-money-check fa-3x"></i>
+                    <h3> اعتراف بدين </h3>
+                   
+                </div>
+            </div>
+            </a>
+            <!-- /الخدمة -->
+           
+            <a href="{% url 'ventecycle' %}">
+                <!-- الخدمة -->
+                <div class="col-md-4 col-sm-6">
+                    <div class="service">
+                        <i class="fa-solid fa-motorcycle fa-3x"></i>                     <h3>  بيع دراجة   </h3>
+                       
+                    </div>
+                </div>
+                </a>
+                <a href="">
+                    <!-- الخدمة -->
+                    <div class="col-md-4 col-sm-6">
+                        <div class="service">
+                            <i class="fa-solid fa-pen fa-3x"></i>
+                            <h3>  طعن  </h3>
+                           
+                        </div>
+                    </div>
+                    </a>
+            <!-- /الخدمة -->
+        </div>
+        <!-- /الصف -->
+    </div>
+    <!-- /الحاوية -->
+</div>
+<!-- /الخدمات -->
+<style>
+h3, p{
+     direction: rtl;
+}
+
+.service i {
+    position: absolute;
+    /* right: 20px; */
+    text-align: center;
+    font-size: 32px;
+    color: #6195FF;
+    border-radius: 50%;
+    left: -220px;
+}
+.service h3{
+
+
+    right: 20px;
+}
+</style>
+{% include 'users/footer.html' %}
+{% endblock content %}

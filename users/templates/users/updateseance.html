@@ -1,0 +1,120 @@
+{% extends "users/base5.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+/* Add your custom styles here */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.btn {
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-default {
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.btn-default:hover {
+    background-color: #e9ecef;
+}
+
+.modal-dialog {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background-color: #fff;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+}
+
+.modal-title {
+    font-size: 24px;
+    text-align: center; /* Center the text */
+    margin: 0; /* Remove default margin */
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    border-radius: 0 0 10px 10px;
+    background-color: #f8f9fa;
+}
+</style>
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">تعديل جلسة</h4>
+        </div>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="stitre" class="form-label">عنوان الجلسة</label>
+                    <input type="text" id="stitre" name="stitre" class="form-control" value="{{ seance.titre }}">
+                </div>
+              
+                <div class="form-group">
+                    <label for="sdate" class="form-label">تاريخ وتوقيت الجلسة</label>
+                    <input type="datetime-local" id="sdate" name="sdate" class="form-control" value="{{ seance.date|date:'Y-m-d\TH:i' }}">
+                </div>
+                <div class="form-group">
+                    <label for="sdetail" class="form-label">تفاصيل الجلسة</label>
+                    <textarea id="sdetail" name="sdetail" class="form-control">{{ seance.remarques }}</textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="history.back()">الغاء</button>
+                <input type="submit" class="btn btn-primary" value="حفظ التغييرات">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% include 'users/footer.html' %}
+{% endblock content %}

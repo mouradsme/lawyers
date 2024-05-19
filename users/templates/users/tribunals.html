@@ -1,0 +1,154 @@
+{% extends "users/base4.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<!-- Bootstrap -->
+<link type="text/css" rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-K5NAXJiBE5P1tJ6lp7BX4ELt3zB8TfANbapVcxC+8iGuL15S0pUbQxvFVtfEQpoRLrnWNG8SGDoNE+9Cbe8FgA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa; /* Light grey background */
+    }
+
+    .main-container {
+        margin: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .controls-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .btn-add-client {
+        background-color: #2bca75;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-add-client:hover {
+        background-color: #218c58; /* Darker shade on hover */
+    }
+
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+        margin-top: 20px;
+    }
+
+    .table-container table {
+        width: 100%;
+        overflow-y: auto;
+        border-collapse: collapse;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .table-container th, .table-container td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: right;
+    }
+
+    .btn-print {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-print:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+    }
+</style>
+
+<!-- Scrollable main container -->
+<div class="main-container">
+   
+
+    <!-- Scrollable table container -->
+    <div class="table-container">
+        <button class="btn btn-primary btn-print" onclick="printTable()">طباعة</button>
+        <script>
+            function printTable() {
+                var tableClone = $('#example').clone(); // Clone the table
+        
+                // Remove all columns except the ones you want to keep
+                tableClone.find('th, td').each(function(index, cell) {
+                    var columnIndex = $(cell).index() + 1;
+                    if (![1, 2, 3, 4, 5, 6, 7].includes(columnIndex)) {
+                        $(cell).remove();
+                    }
+                });
+        
+                var printWindow = window.open('', '_blank');
+                printWindow.document.write('<html><head><title>  طباعة قائمة المحاكم و المجالس الجزائرية</title></head><body>');
+                printWindow.document.write('<h1>الــجمـهورية الــجزائريــــة الـديـمقــراطـية الــشعــبيــة</h1>');
+                printWindow.document.write(tableClone[0].outerHTML);
+                printWindow.document.write('</body></html>');
+                printWindow.document.close();
+                printWindow.print();
+            }
+        </script>
+        
+        
+        
+        
+
+        <table id="example" class="table table-hover" dir="rtl">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">المجالس</th>
+                    <th style="text-align: center;">المحاكم التابعة</th>
+                </tr>
+            </thead>
+            
+            <tbody id="searchResults">
+                {% for tribunal in tribunals %}
+                <tr>
+                    <td>{{ tribunal.college.name }}</td>
+                    <td>{{ tribunal.name }}</td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="-container">
+        
+        </div>
+    <!-- Print button moved to a new container -->
+   
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var table = $('#example').DataTable();
+
+      
+    });
+</script>
+</div>
+
+{% include 'users/footer.html' %}
+
+{% endblock content %}

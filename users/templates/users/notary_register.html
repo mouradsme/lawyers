@@ -1,0 +1,181 @@
+{% extends "users/base.html" %}
+{% block title %} صفحة التسجيل {% endblock title %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل المحامين</title>
+
+</head>
+<body>
+    <div class="form-content my-3 p-3">
+		<div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card shadow-lg border-0 rounded-lg mt-0 mb-5">
+                        <div class="card-header justify-content-center">
+                        	<h3 class="font-weight-light my-4 text-center">إنشاء حساب</h3>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST">
+                                {% csrf_token %}
+                                {% if form.errors %}
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                    <div id="form_errors">
+                                        {% for key, value in form.errors.items %}
+                                            <strong>{{ value }}</strong>
+                                        {% endfor %}
+                                    </div>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {% endif %}
+    <h2>تسجيل الموثق</h2>
+    <div class="form-row">
+        <div class="col-md-6">
+            <div class="form-group">
+            <p><label class="small mb-1">الاسم الأول</label></p>
+                {{ form.first_name }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+            <p> <label class="small mb-1">اسم العائلة</label></p>
+                {{ form.last_name }}
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6">
+            <div class="form-group">
+            <p> <label class="small mb-1">اسم المستخدم</label></p>
+                {{ form.username }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+            <p>   <label class="small mb-1">البريد الإلكتروني</label></p>
+                {{ form.email }}
+            </div>
+        </div>
+
+    <!--  <div class="col-md-6">
+            <div class="form-group">
+                <label class="small mb-1">تاريخ الميلاد</label>
+                {{ form.birthday }}
+            </div>
+        </div>
+    </div>-->
+    <div class="form-row">
+        <div class="col-md-6">
+            <div class="form-group">
+            <p>   <label class="small mb-1"> رخصة الموثق</label></p>
+                {{ form.Notary_license }}
+                
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="form-group">
+            <p> <label class="small mb-1"> منطقة الممارسة </label></p>
+                {{ form.practice_areas }}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-row">
+        <div class="col-md-6">
+            <div class="form-group">
+            <p><label class="small mb-1"> سنوات الخبرة  </label></p>
+                {{ form.experience_years }}
+                
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="form-group">
+               <p> <label class="small mb-1">رقم الهاتف  </label></p>
+                {{ form.phone_number }}
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="small mb-1">كلمة المرور</label>
+                {{ form.password1 }}
+                {{ form.errors.password }}
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="form-group">
+              <p>  <label class="small mb-1">تأكيد كلمة المرور</label></p>
+                {{ form.password2 }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group mt-4 mb-0">
+        <button type="submit" class="col-md-12 btn btn-dark">التسجيل</button><br><br>
+    </div>
+</form>
+</div>
+<div class="card-footer text-center">
+<div class="small">
+    <a href="{% url 'login' %}">هل لديك حساب؟ انتقل إلى تسجيل الدخول</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<style>
+
+.row {
+margin-left: -15px;
+display: flex;
+justify-content: center;
+margin-right: -15px;
+margin-top: 80px;
+}
+p {
+    margin: 0 0 10px;
+    direction: rtl;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], input[type="date"], input[type="url"], input[type="tel"], textarea {
+    height: 40px;
+    width: 100%;
+    border: none;
+    background: #F4F4F4;
+    border-bottom: 2px solid #EEE;
+    color: #354052;
+    padding: 0px 10px;
+    opacity: 0.5;
+    -webkit-transition: 0.2s border-color, 0.2s opacity;
+    transition: 0.2s border-color, 0.2s opacity;
+    direction: rtl;
+}
+.small mb-1{
+
+    direction: rtl;
+
+}
+
+h2 {
+    font-size: 36px;
+    direction: rtl;
+}
+</style>
+{% endblock content %}
+
+</body>
+</html>

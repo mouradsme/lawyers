@@ -1,0 +1,331 @@
+{% extends "users/base6.html" %}
+{% load static %}
+
+{% block title %} الصفحة الرئيسية {% endblock title%}
+{% block content %}
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}" />
+    
+	<!-- Owl Carousel -->
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.carousel.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.theme.default.css' %}" />
+
+	<!-- Magnific Popup -->
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/magnific-popup.css' %}" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="{% static 'static/css/font-awesome.min.css' %}">
+
+
+    <!-- About -->
+	<div id="about" class="section md-padding" style="width: 100%; height: 200px;">
+
+		<!-- Container -->
+		<div class="container"  style="width: 100%; height: 100%;">
+			<div class="bg-img" >
+				<style>
+					.bg-img {
+						background-image: url('{% static "static/img/justice.jpg" %}');
+						background-size: cover; /* Adjust the size to cover the entire container */
+						/* You can also use other values like 'contain' or specific dimensions */
+						/* background-size: contain; */
+						/* background-size: 100% 100%; */
+					}
+				</style>
+				<div class="overlay"></div>
+			</div>
+		</div>
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Section header -->
+				<div class="section-header text-center">
+					
+					<h2 class="title" style="color: white;"s> رقم القضية :{{ affaire.Naff}}</h2>
+					
+				</div>
+				<!-- /Section header -->
+                
+
+				<link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+				<link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+				<link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+				<!-- about -->
+				
+            </div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</div>
+
+	
+	<div id="service" class="section md-padding">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Section header -->
+				<div class="section-header text-center">
+					<h2 class="title">  معلومات  القضية</h2>
+				</div>
+				<!-- /Section header -->
+
+				<!-- service -->
+                <div class="col-md-4 col-sm-6"  >
+					<div class="service" style="text-align: right;" >
+                        <h3 style="font-weight: bolder; color: #000;"> تفاصيل القضية <i class="fa-solid fa-gavel icon-size"></i></h3>
+
+                        <p style="font-weight: bolder; color: #000;"> رقم القضية :{{ affaire.Naff}} </p>
+                        <p style="color: #000;"> موضوع القضية :{{ affaire.sujet}}</p>
+                        <p style=" color: #000;"> تصنيف القضية :{{ affaire.taffaire}}</p>
+                        <p style="color: #000;"> مرحلة القضية :{{ affaire.etapeaffaire}}</p>
+                        <p style="color: #000;"> {{ affaire.date}}:في تاريخ </p>
+                        <p style="color: #000;"> ب :{{affaire.conseil_associated}} {{ affaire.tribunal_associated}} </p>
+                        <p style="color: #000;"> مبلغ القضية حدد ب :{{ affaire.budjet}} دينار جزائري </p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="service" style="text-align: right;">
+                        <h3 style="font-weight: bolder; color: #000;"> معلومات الموكل <i class="fa-solid fa-user-check"></i></h3>
+
+                        
+      
+      <p style="color: #000;"> لصالح الموكل :{{ affaire.Nclient}}</p>
+      <p style="color: #000;"> بصفته :{{ affaire.typeclient}} </p>
+     
+      
+					</div>
+				</div>
+			
+				<div class="col-md-4 col-sm-6">
+					<div class="service" style="text-align: right;">
+                        <h3 style="font-weight: bolder; color: #000;"> معلومات الخصم <i class="fa-solid fa-user"></i></h3>
+
+                        <p style="color: #000;"> ضد الخصم :{{ affaire.adversaire}}</p>
+                        <p style="color: #000;"> المقيم ب :{{ affaire.adresse}}</p>
+                        <p style="color: #000;"> تحت دفاع المحامي :{{ affaire.avocat}}</p>
+					</div>
+				</div>
+				<!-- /service -->
+
+				<!-- service -->
+				
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	
+	
+	<div class="row">
+
+		<!-- Section header -->
+
+
+		<!-- pricing -->
+		<div class="col-sm-4">
+			<div class="pricing">
+				
+				<h2> جلسات القضية </h2>
+				<ul class="price-content">
+					<li>
+						<p> يمكنك هنا الاطلاع على جميع الجلسات الخاصة بالقضية  </p>
+					</li>
+					
+				</ul>
+				<div class="price-btn">
+					<button class="outline-btn"> اطلع على  جدول الجلسات  الان </button>
+				</div>
+			</div>
+		</div>
+		<!-- /pricing -->
+
+		<!-- pricing -->
+		<div class="col-sm-4">
+			<div class="pricing">
+				
+				<h2> مدفوعات  القضية </h2>
+				<ul class="price-content">
+					<li>
+						<p> يمكنك هنا الاطلاع على جميع المدفوعات الخاصة بالقضية  </p>
+					</li>
+					
+				</ul>
+				<div class="price-btn">
+					<button class="outline-btn"> اطلع على  جدول المدفوعات  الان </button>
+				</div>
+			</div>
+		</div>
+		<!-- /pricing -->
+
+		<div class="col-sm-4">
+			<div class="pricing">
+				
+				<h2> مستندات  القضية </h2>
+				<ul class="price-content">
+					<li>
+						<p> يمكنك هنا الاطلاع على جميع المستندات الخاصة بالقضية  </p>
+					</li>
+					
+				</ul>
+				<div class="price-btn">
+					<button class="outline-btn"> اطلع على جدول المستندات  الان </button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<!-- Row -->
+
+</div>
+	<div id="numbers" class="section sm-padding">
+
+		<!-- Background Image -->
+		<div class="bg-img">
+			<style>
+				.bg-img {
+					background-image: url('{% static "static/img/affaire.jpg" %}');
+					
+				}
+
+
+			</style>
+			<div class="overlay"></div>
+		</div>
+		<!-- /Background Image -->
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<!-- number -->
+			
+				<!-- /number -->
+
+				<!-- number -->
+				<div class="col-sm-3 col-xs-6">
+					<div class="number">
+						<i class="fa-solid fa-angles-down"></i>
+						<h3 class="white-text"><span class="counter">12</span> DA</h3>
+						<span class="white-text"> المبلغ المتبقي</span>
+					</div>
+				</div>
+				<!-- /number -->
+
+				<!-- number -->
+				<div class="col-sm-3 col-xs-6">
+					<div class="number">
+						<i class="fa-solid fa-arrows-up-to-line"></i>
+						<h3 class="white-text"><span class="counter">154</span>DA </h3>
+						<span class="white-text">  المبلغ المدفوع</span>
+					</div>
+				</div>
+				<!-- /number -->
+
+				<!-- number -->
+				<div class="col-sm-3 col-xs-6">
+					<div class="number">
+						<i class="fa-duotone fa-dollar-sign"></i> 
+						<h3 class="white-text"><span class="counter">45</span> DA</h3>
+						<span class="white-text"> المبلغ الاجمالي</span>
+					</div>
+				</div>
+				<!-- /number -->
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</div>
+
+	<footer id="footer" class="sm-padding bg-dark">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<div class="col-md-12">
+
+					<!-- footer logo -->
+					<div class="footer-logo">
+						<a href="index.html"><img src="{% static 'static/img/logo-alt.png' %}" alt="logo"></a>
+					</div>
+					<!-- /footer logo -->
+
+					<!-- footer follow -->
+					<ul class="footer-follow">
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+						<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+					</ul>
+					<!-- /footer follow -->
+
+					<!-- footer copyright -->
+					<div class="footer-copyright">
+						<p>Copyright © 2017. All Rights Reserved. Designed by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+					</div>
+					<!-- /footer copyright -->
+
+				</div>
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</footer>
+	<!-- /Footer -->
+
+	<!-- Back to top -->
+	<div id="back-to-top"></div>
+	<!-- /Back to top -->
+
+	<!-- Preloader -->
+	<div id="preloader">
+		<div class="preloader">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!-- /Preloader -->
+
+	<!-- jQuery Plugins -->
+	<script type="text/javascript" src="{% static 'static/js/jquery.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'static/js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'static/js/owl.carousel.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'static/js/jquery.magnific-popup.js' %}"></script>
+	<script type="text/javascript" src="{% static 'static/js/main.js' %}"></script>
+	
+</body>
+<style>
+    @media only screen and (min-width: 768px){
+.main-nav li {
+    padding: 0px 0px;
+}}
+</style>
+<script>
+
+	
+</script>
+</html>
+
+{% endblock content %}

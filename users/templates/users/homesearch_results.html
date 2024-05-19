@@ -1,0 +1,110 @@
+{% extends "users/base.html" %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{% static 'your_css_file.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .card {
+            max-width: 600px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            margin-bottom: 20px;
+            width: 100%; /* Initially, cards take up full width */
+        }
+        .card-image {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-image img {
+  width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%; /* Make the image round */
+}
+
+        .card-content {
+            flex: 2;
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+        }
+        .card-info {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        /* Media query for responsive layout */
+        @media (min-width: 768px) {
+            .card {
+                width: calc(50% - 20px); /* 2 cards in a row with 20px gap between */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    {% if assistants %}
+        {% for assistant in assistants %}
+            <div class="card">
+                {% if assistant.profile.avatar %}
+                    <div class="card-image"><img src="{{ assistant.profile.avatar.url }}" alt="صورة الملف الشخصي" class="profile-image"></div>
+                {% else %}
+                    <div class="card-image"><img src="{% static 'path/to/default/avatar.jpg' %}" alt="صورة الملف الشخصي" class="profile-image"></div>
+                {% endif %}
+                <div class="card-content">
+                    <h2 class="card-title">{{ assistant.first_name }} {{ assistant.last_name }}</h2>
+                    <p class="card-info"><strong>الولاية:</strong> {{ assistant.practice_areas }}</p>
+                    <p class="card-info"><strong>الهاتف:</strong> {{ assistant.phone_number }}</p>
+                    <p class="card-info"><strong>البريد الإلكتروني:</strong> {{ assistant.email }}</p>
+                    <p class="card-info"><strong>اسم المستخدم:</strong> {{assistant.username}}</p>
+                    <form action="{% url 'message_form' assistant.id %}" method="get">
+                        <div class="form-group">
+                            <input type="hidden" name="recipient" value="{{ assistant.id }}">
+                            <input type="submit" value="إرسال رسالة" class="btn btn-primary btn-sm">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>لم يتم العثور على نتائج.</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
+
+{% endblock content %}

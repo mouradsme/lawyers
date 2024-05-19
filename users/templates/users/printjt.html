@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Page</title>
+    <style>
+        body {
+            font-family: 'Dejavu', Arial, sans-serif;
+            margin: 0;
+        }
+
+        .cont1 {
+            padding: 5px;
+            text-align: center;
+            margin: 0 auto; /* Centers the div horizontally */
+            margin-top: 5vh; /* Moves the div down by half of the viewport height */
+            transform: translateY(-50%); /* Centers the div vertically */
+        }
+
+        .cont2 {
+            border: 1px solid #ccc;
+            padding: 25px;
+            text-align: center;
+            margin: 0 auto; /* Centers the div horizontally */
+            margin-top: 25vh; /* Moves the div down by half of the viewport height */
+            transform: translateY(-50%);
+        }
+
+        .cont3 {
+            padding: 2px;
+            text-align: right;
+            margin: 0 auto; /* Centers the div horizontally */
+            margin-top: 0vh; /* Moves the div down by half of the viewport height */
+            /* Centers the div vertically */
+        }
+
+        .bold-text {
+            font-weight: bold;
+        }
+
+        /* Hide print button when printing */
+        @media print {
+            .print-button {
+                display: none;
+            }
+        }
+
+        .print-button {
+            background-color: #1783dc; /* Blue background */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: block; /* Change display to block */
+            margin: 0 auto; /* Center button horizontally */
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: black;
+        }
+    </style>
+</head>
+<h2 style="text-align: center;">جدول جميع قضايا المكتب</h2>
+<body>
+    
+    <div class="">
+        <div class="cont3">
+            <table id="example" dir="rtl">
+                <thead class="thead-dark">
+                    <tr> 
+                        <th><i class="fa-regular fa-folder-open fa-solid "></i></th>
+                        <th>رقم القضية</th>
+                        <th>القضية</th>
+                        <th>الموكل</th>
+                        <th>الخصم </th>
+                        <th>محامي الخصم </th>
+                        <th>مقر المحاكمة </th>
+                        <th> اجمالي اتعاب القضية</th>
+                        <th> تاريخ القيد  </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for affaires in Aff %}
+                        <tr>
+                            <td style="font-weight: bold;">{{ affaires.id }}</td>
+                            <td style="font-weight: bold;">  {{ affaires.Naff }}</td>
+                            <td><p style="font-weight: bold;"> الموضوع:</p> {{ affaires.sujet }}<br><p style="font-weight: bold;">المرحلة : </p> {{ affaires.etapeaffaire  }}<br> <p style="font-weight: bold;">الحالة: </p>
+                                {% if affaires.etataffaire == "منتهية" %}
+                                    <span style="color: red;font-weight: bold;">{{ affaires.etataffaire }}</span><br>
+                                {% else %}
+                                    <span style="color: rgb(10, 245, 10);font-weight: bold;">{{ affaires.etataffaire }}</span>{% endif %}</td>
+                            <td>{{ affaires.Nclient}}<br>{{ affaires.typeclient }}</td>
+                            <td>{{ affaires.adversaire }}<br>{{affaires.adresse }}</td>
+                            <td>{{ affaires.avocat }}</td>
+                            <td> <i class="fa-solid fa-location-dot"></i>{{ affaires.conseil_associated  }}<br>{{ affaires.tribunal_associated}}<br>
+                                <p style="font-weight: bold;">القسم /الغرفة:</p>   {{ affaires.taffaire}}</td>
+                            <td>{{ affaires.budjet }} <p style="font-weight: bold;"> دينار جزائري</p>  </td>
+                            
+                            <td>{{ affaires.date|date:"Y-m-d" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Print button -->
+    <div class="cont3">
+        <button class="print-button" onclick="printPage()">طباعة</button>
+    </div>
+
+    <!-- JavaScript function to print the page -->
+    <script>
+        function printPage() {
+            window.print();
+        }
+    </script>
+</body>
+
+</html>

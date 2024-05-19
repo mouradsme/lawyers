@@ -1,0 +1,114 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block title %} الصفحة الرئيسية {% endblock title%}
+{% block content %}
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}" />
+    
+	<!-- Owl Carousel -->
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.carousel.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.theme.default.css' %}" />
+
+	<!-- Magnific Popup -->
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/magnific-popup.css' %}" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="{% static 'static/css/font-awesome.min.css' %}">
+<div class="section md-padding">
+    <!-- الحاوية -->
+    <div class="container">
+        <!-- الصف -->
+        <div class="row">
+            <!-- رأس القسم -->
+            <div class="section-header text-center">
+                <h2 class="title">التسجيل كمساعد عدالة </h2>
+            </div>
+            <!-- /رأس القسم -->
+            <!-- الخدمة -->
+            <a href="{% url 'lawregister' %}">
+                <div class="col-md-4 col-sm-6">
+                    <div class="service">
+                        <i class="fa fa-balance-scale"></i>
+                        <h3>التسجيل كمحامي </h3>
+                        <p>سجل كمحامي للمشاركة في المحاكمات وتقديم الاستشارات القانونية.</p>
+                   
+                    </div>
+                </div>
+            </a>
+            <!-- /الخدمة -->
+            <!-- الخدمة -->
+            <a href="{% url 'notary_register' %}">
+                <div class="col-md-4 col-sm-6">
+                    <div class="service">
+                        <i class="fa-solid fa-scroll"></i>
+                        <h3>التسجيل كموثق</h3>
+                        <p>سجل كموثق لتقديم الخدمات القانونية المعتمدة والموثوقة.</p>
+                        <br>
+                    </div>
+                </div>
+            </a>
+            <!-- /الخدمة -->
+            <a href="">
+            <!-- الخدمة -->
+            <div class="col-md-4 col-sm-6">
+                <div class="service">
+                    <i class="fa fa-language"></i>
+                    <h3>التسجيل كمترجم </h3>
+                    <p >سجل كمترجم لتقديم خدمات الترجمة في القضايا والمحاكمات.</p>
+                   
+                </div>
+            </div>
+            </a>
+            <!-- /الخدمة -->
+            <a href="">
+            <!-- الخدمة -->
+            <div class="col-md-4 col-sm-6">
+                <div class="service">
+                    <i class="fa fa-gavel"></i>
+                    <h3>التسجيل كمحضر قضائي</h3>
+                    <p>سجل كمحضر قضائي للمساهمة في إجراءات المحكمة والإفادة بالشهادات.</p>
+                   
+                </div>
+            </div>
+            </a>
+            <!-- /الخدمة -->
+            <a href="">
+            <!-- الخدمة -->
+            <div class="col-md-4 col-sm-6">
+                <div class="service">
+                    <i class="fa fa-flask"></i>
+                    <h3>التسجيل كخبير قضائي </h3>
+                    <p>سجل كخبير قضائي لتقديم الخبرات والتحليلات في القضايا القانونية.</p>
+                   
+                </div>
+            </div>
+            </a>
+            <!-- /الخدمة -->
+        </div>
+        <!-- /الصف -->
+    </div>
+    <!-- /الحاوية -->
+</div>
+<!-- /الخدمات -->
+<style>
+h3, p{
+     direction: rtl;
+}
+
+.service i {
+    position: absolute;
+    /* right: 20px; */
+    text-align: center;
+    font-size: 32px;
+    color: #6195FF;
+    border-radius: 50%;
+    left: -220px;
+}
+.service h3{
+
+
+    right: 20px;
+}
+</style>
+{% endblock content %}

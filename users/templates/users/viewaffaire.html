@@ -1,0 +1,920 @@
+{% extends "users/base6.html" %}
+{% load static %}
+
+{% block title %} الصفحة الرئيسية {% endblock title%}
+{% block content %}
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}" />
+    
+	<!-- Owl Carousel -->
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.carousel.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.theme.default.css' %}" />
+
+	<!-- Magnific Popup -->
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/magnific-popup.css' %}" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="{% static 'static/css/font-awesome.min.css' %}">
+
+
+    <!-- About -->
+	<div id="about" class="section md-padding" style="width: 100%; height: 150px;">
+
+		<!-- Container -->
+		<div class="container"  style="width: 100%; height: 100%;">
+			<div class="bg-img" >
+				<style>
+					.bg-img {
+						background-image: url('{% static "static/img/justice.jpg" %}');
+						background-size: cover;
+					}
+				</style>
+				<div class="overlay"></div>
+			</div>
+		</div>
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Section header -->
+				<div class="section-header text-center" style="width: 100%; height: 100%; text-align: center;">
+					
+					<h2 class="title" style="color: white;"s>  رقم القضية :{{ affaire.Naff}} <i class="fa-solid fa-gavel icon-size"></i><br>  {{ affaire.sujet}}<i class="fa-solid fa-magnifying-glass"></i> </h2>
+					
+				</div>
+				<!-- /Section header -->
+                
+
+				<link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+				<link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+				<link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+				<!-- about -->
+				
+            </div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</div>
+
+	
+	<div id="service" class="section md-padding">
+
+		<!-- Container -->
+		<div class="container" id="info">
+
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Section header -->
+				<div class="section-header text-center">
+					<h2 class="title">  معلومات  القضية <i class="fa-solid fa-circle-info"></i></h2>
+				</div>
+				<!-- /Section header -->
+
+				<!-- service -->
+                <div class="col-md-4 col-sm-6"  >
+					<div class="service" style="text-align: right;" >
+                        <h3 style="font-weight: bolder; color: #000;"> تفاصيل القضية <i class="fa-solid fa-gavel icon-size"></i></h3>
+
+                        <p style="font-weight: bolder; color: #000;"> رقم القضية :{{ affaire.Naff}} </p>
+                        <p style="color: #000;"> موضوع القضية :{{ affaire.sujet}}</p>
+                        <p style=" color: #000;"> تصنيف القضية :{{ affaire.taffaire}}</p>
+                        <p style="color: #000;"> مرحلة القضية :{{ affaire.etapeaffaire}}</p>
+                        <p style="color: #000;"> {{ affaire.date}}:في تاريخ </p>
+                        <p style="color: #000;"> ب :{{affaire.conseil_associated}} {{ affaire.tribunal_associated}} </p>
+                        <p style="color: #000;"> مبلغ القضية حدد ب :{{ affaire.budjet}} دينار جزائري </p>
+						<p style="color: #000;">   تفاصيل اخرى:{{ affaire.details}}   </p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6">
+					<div class="service" style="text-align: right;">
+                        <h3 style="font-weight: bolder; color: #000;"> معلومات الموكل <i class="fa-solid fa-user-check"></i></h3>
+
+                        
+      
+      <p style="color: #000;"> لصالح الموكل :{{ affaire.Nomclient}}</p>
+      <p style="color: #000;"> بصفته :{{ affaire.typeclient}} </p>
+     
+      
+					</div>
+				</div>
+			
+				<div class="col-md-4 col-sm-6">
+					<div class="service" style="text-align: right;">
+                        <h3 style="font-weight: bolder; color: #000;"> معلومات الخصم <i class="fa-solid fa-user"></i></h3>
+
+                        <p style="color: #000;"> ضد الخصم :{{ affaire.adversaire}}</p>
+                        <p style="color: #000;"> المقيم ب :{{ affaire.adresse}}</p>
+                        <p style="color: #000;"> تحت دفاع المحامي :{{ affaire.avocat}}</p>
+					</div>
+				</div>
+				<!-- /service -->
+
+				<!-- service -->
+				
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	
+	
+	<div class="row">
+
+		<!-- Section header -->
+
+
+		<!-- pricing -->
+		<div class="col-sm-4">
+			<div class="pricing">
+				
+				<h2> جلسات القضية <i class="fa-solid fa-clock"></i></h2>
+				<ul class="price-content">
+					<li>
+						<p> يمكنك هنا الاطلاع على جميع الجلسات الخاصة بالقضية  </p>
+					</li>
+					
+				</ul>
+				<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+				<div class="price-btn">
+					<a class="outline-btn" href="#seances"> اطلع على جدول الجلسات الآن <i class="fa-solid fa-eye"></i></a>
+					<a  class="outline-btn" href="#addEmployeeModal" data-toggle="modal" class="button-37"> <span>اضافة جلسة جديدة للقضية  <i class="fa-solid fa-plus"></i> </span></a>       
+
+				</div>
+			</div>
+		</div>
+		<!-- /pricing -->
+
+		<!-- pricing -->
+		<div class="col-sm-4">
+			<div class="pricing">
+				
+				<h2> مدفوعات  القضية  <i class="fa-solid fa-money-check-dollar"></i></h2>
+				<ul class="price-content">
+					<li>
+						<p> يمكنك هنا الاطلاع على جميع المدفوعات الخاصة بالقضية  </p>
+					</li>
+					
+				</ul>
+				<div class="price-btn">
+					<a class="outline-btn" href="#paiements" > اطلع على  جدول المدفوعات  الان <i class="fa-solid fa-eye"></i></a>
+					<a  class="outline-btn" href="#addpayModal" data-toggle="modal" class="button-37"> <span>اضافة دفعة جديدة للقضية   الان    <i class="fa-solid fa-plus"></i></span></a>       
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-sm-4">
+			<div class="pricing">
+				
+				<h2> مستندات القضية  <i class="fa-regular fa-file"></i></h2>
+				<ul class="price-content">
+					<li>
+						<p> يمكنك هنا الاطلاع على جميعالوثائق الخاصة بالقضية  </p>
+					</li>
+					
+				</ul>
+				<div class="price-btn">
+					<a class="outline-btn" href="#documents" > اطلع على  جدول المدفوعات  الان <i class="fa-solid fa-eye"></i></a>
+					<a  class="outline-btn" href="#adddocumentModal" data-toggle="modal" class="button-37"> <span>اضافة دفعة جديدة للقضية   الان    <i class="fa-solid fa-plus"></i></span></a>       
+				</div>
+			</div>
+		</div>
+		<!-- /pricing -->
+
+		
+	
+	</div>
+	<!-- Row -->
+
+</div>
+	<div id="numbers" class="section sm-padding">
+
+		<!-- Background Image -->
+		<div class="bg-img">
+			<style>
+				.bg-img {
+					background-image: url('{% static "static/img/affaire.jpg" %}');
+					
+				}
+
+
+			</style>
+			<div class="overlay"></div>
+		</div>
+		<!-- /Background Image -->
+
+		<!-- Container -->
+		<div class="container" id="numeros">
+
+			<!-- Row -->
+			<div class="row">
+
+				<!-- number -->
+			
+				<!-- /number -->
+
+				<!-- number -->
+				<div class="col-sm-3 col-xs-6">
+					<div class="number">
+						<i class="fa-solid fa-angles-down"></i>
+						<h3 class="white-text"><span class="counter">{{remaining_amount}} </span> DA</h3>
+						<span class="white-text"> المبلغ المتبقي</span>
+					</div>
+				</div>
+				<!-- /number -->
+
+				<!-- number -->
+				<div class="col-sm-3 col-xs-6">
+					<div class="number">
+						<i class="fa-solid fa-arrows-up-to-line"></i>
+						<h3 class="white-text"><span class="counter">{{ total_payment }}</span>DA </h3>
+						<span class="white-text">  المبلغ المدفوع</span>
+					</div>
+				</div>
+				<!-- /number -->
+
+				<!-- number -->
+				<div class="col-sm-3 col-xs-6">
+					<div class="number">
+						<i class="fa-duotone fa-dollar-sign"></i> 
+						<h3 class="white-text"><span class="counter">{{ affaire.budjet}}</span> DA</h3>
+						<span class="white-text"> المبلغ الاجمالي</span>
+					</div>
+				</div>
+				<!-- /number -->
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</div>
+<!-- Bootstrap -->
+<link type="text/css" rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-K5NAXJiBE5P1tJ6lp7BX4ELt3zB8TfANbapVcxC+8iGuL15S0pUbQxvFVtfEQpoRLrnWNG8SGDoNE+9Cbe8FgA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa; /* Light grey background */
+    }
+
+    .main-container1 {
+        margin: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .controls-container1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .btn-add-client {
+        background-color: #2bca75;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-add-client:hover {
+        background-color: #218c58; /* Darker shade on hover */
+    }
+
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+        margin-top: 20px;
+    }
+
+    .table-container table {
+        width: 100%;
+        overflow-y: auto;
+        border-collapse: collapse;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .table-container th, .table-container td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: right;
+    }
+
+    .btn-print {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-print:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+    }
+</style>
+
+<!-- Scrollable main container -->
+<div id="seances" class="main-container1">
+   
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<style>
+		ul.verdict-list {
+			list-style-type: none;
+			padding: 0;
+		}
+	
+		ul.verdict-list li {
+			background-color: #f2f2f2; /* Gray background color */
+			border: 1px solid #ccc; /* Border color */
+			padding: 10px; /* Adjust padding as needed */
+			margin-bottom: 10px;
+		}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+	<div id="addEmployeeModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form method="post" action="{% url 'add_seance' Aff_id=affaire.id %}">
+	
+					{% csrf_token %}
+					<div class="modal-header">
+						<h4 class="modal-title">إضافة جلسة</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="stitre">عنوان الجلسة</label>
+							<input type="text" id="stitre" name="stitre" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="numaff">رقم القضية</label>
+							<input type="text" id="numaff" name="numaff" class="form-control" required readonly value="{{ affaire.Naff }}">
+						</div>
+						<div class="form-group">
+							<label for="sdate">تاريخ وتوقيت الجلسة</label>
+							<input type="datetime-local" id="sdate" name="sdate" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="sdetail">تفاصيل الجلسة</label>
+							<textarea id="sdetail" name="sdetail" class="form-control" required></textarea>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">الغاء</button>
+						<input type="submit" class="btn btn-success" value="اضافة">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<div id="editSeanceModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form method="post" action="">
+					{% csrf_token %}
+					<div class="modal-header">
+						<h4 class="modal-title">تعديل جلسة</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="stitre_edit">عنوان الجلسة</label>
+							<input type="text" id="stitre_edit" name="stitre" class="form-control" value="{{ seance.titre }}" required>
+						</div>
+					
+						<div class="form-group">
+							<label for="sdate_edit">تاريخ وتوقيت الجلسة</label>
+							<input type="datetime-local" id="sdate_edit" name="sdate" class="form-control" value="{{ seance.date|date:'Y-m-d\TH:i' }}" required>
+						</div>
+						<div class="form-group">
+							<label for="sdetail_edit">تفاصيل الجلسة</label>
+							<textarea id="sdetail_edit" name="sdetail" class="form-control" required>{{ seance.remarques }}</textarea>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">الغاء</button>
+						<input type="submit" class="btn btn-primary" value="حفظ التغييرات">
+					</div>
+				</form>
+	
+			</div>
+		</div>
+	</div>
+	
+	
+    <!-- Scrollable table container -->
+    <div class="table-container">
+		<h3 style="margin-left: 500px;">  جلسات القضية</h3>
+		<a  class="btn btn-success btn-add-client" href="#addEmployeeModal" data-toggle="modal" class="button-37"> <span>اضافة جلسة جديدة + </span></a>       
+
+        <table id="example" class="table table-hover" dir="rtl">
+            <thead class="thead-dark">
+                <tr> 
+                   
+                    <th>عنوان الجلسة</th>
+                    <th>تاريخ الجلسة</th>
+                    <th>تفاصيل الجلسة</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="searchResults">
+                {% if seances %}
+                    {% for seance in seances %}
+                        <tr>
+                            
+                            
+                            <td>{{ seance.titre }}</td>
+                            <td>{{ seance.date|date:"Y-m-d H:i" }}</td>
+                            <td>{{ seance.remarques }}</td>
+                            <td>  <a href="{% url 'delete_seance' seance.id %}"  onclick="return confirm('هل تريد فعلا الحذف؟')" class="btn btn-danger btn-sm">
+								<i class="fa-solid fa-delete-left"></i>
+							</a>
+							<a href="{% url 'updateseance' seance.id %}"  class="btn btn-info btn-sm">
+								<i class="fa-solid fa-pen-to-square"></i>
+							</a>  <a href="{% url 'PrintSeance' seance.id %}" class="btn btn-info btn-sm">
+								<i class="fa-solid fa-print"></i> 
+							</a> <a href="{% url 'viewaffaire' seance.aff_id %}" class="btn btn-info btn-sm" >
+								عرض التفاصيل
+							</a>    </td>
+                        </tr>
+                    {% endfor %}
+					{% else %}
+					<tr>
+						<td colspan="3" style="color: red;">لا توجد جلسات حتى الآن.</td>
+					</tr>
+				
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<link type="text/css" rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-K5NAXJiBE5P1tJ6lp7BX4ELt3zB8TfANbapVcxC+8iGuL15S0pUbQxvFVtfEQpoRLrnWNG8SGDoNE+9Cbe8FgA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa; /* Light grey background */
+    }
+
+    .main-container {
+        margin: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .controls-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .btn-add-client {
+        background-color: #2bca75;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-add-client:hover {
+        background-color: #218c58; /* Darker shade on hover */
+    }
+
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+        margin-top: 20px;
+    }
+
+    .table-container table {
+        width: 100%;
+        overflow-y: auto;
+        border-collapse: collapse;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .table-container th, .table-container td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: right;
+    }
+
+    .btn-print {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-print:hover {
+        background-color: #0056b3; /* Darker shade on hover */
+    }
+</style>
+
+<!-- Scrollable main container -->
+<div id="paiements" class="main-container">
+   
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<style>
+		ul.verdict-list {
+			list-style-type: none;
+			padding: 0;
+		}
+	
+		ul.verdict-list li {
+			background-color: #f2f2f2; /* Gray background color */
+			border: 1px solid #ccc; /* Border color */
+			padding: 10px; /* Adjust padding as needed */
+			margin-bottom: 10px;
+		}
+	</style>
+
+<div id="addpayModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="{% url 'paiements' affaire.id %}">
+
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h4 class="modal-title"> </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="stitre">المبلغ المدفوع  </label>
+                        <input type="number" id="versement" name="versement" class="form-control" required>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="sdate">تاريخ وتوقيت الدفع</label>
+                        <input type="datetime-local" id="pdate" name="pdate" class="form-control" required>
+                    </div>
+                 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">الغاء</button>
+                    <input type="submit" class="btn btn-success" value="اضافة">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="table-container">
+	<h3 style="margin-left: 500px;">  مدفوعات القضية</h3>
+	<a  class="btn btn-success btn-add-client" href="#addpayModal" data-toggle="modal" class="button-37"> <span>اضافة دفعة جديدة + </span></a>       
+
+	<table id="example" class="table table-hover" dir="rtl">
+		<thead class="thead-dark">
+			<tr>  
+				      <th>المبلغ المدفوع</th>
+				<th>تاريخ و توقيت الدفع</th>
+				<th>  </th>
+			</tr>
+		</thead>
+		<tbody id="searchResults">
+			{% if paiements %}
+			{% for i in paiements %}
+				<tr>
+					
+					<td data-label="Amount">{{ i.versement }} <p style="font-weight: bold;"> دينار جزائري</p></td>
+					<td data-label="Customer Name">{{ i.date|date:"Y-m-d H:i" }}</td>
+					<td>  <a href="{% url 'delete_pay' i.id %}"  onclick="return confirm('هل تريد فعلا الحذف؟')" class="btn btn-danger btn-sm">
+						<i class="fa-solid fa-delete-left"></i>
+						<a href="{% url 'paiementpdf' i.id %}" class="btn btn-info btn-sm">
+							<i class="fa-solid fa-print"></i> 
+						</a>
+					</a>   <a href="#numeros" class="btn btn-info btn-sm" >
+						عرض التفاصيل
+					</a>  </td>
+				</tr>
+			{% endfor %}
+		{% else %}
+			<tr>
+				<td colspan="2" style="color: red;">   .   لم يتم الدفع حتى الان  </td>
+			</tr>
+		{% endif %}
+		</tbody>
+	</table>
+</div>
+</div>
+
+<div id="documents" class="main-container">
+   
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<style>
+		ul.verdict-list {
+			list-style-type: none;
+			padding: 0;
+		}
+	
+		ul.verdict-list li {
+			background-color: #f2f2f2; /* Gray background color */
+			border: 1px solid #ccc; /* Border color */
+			padding: 10px; /* Adjust padding as needed */
+			margin-bottom: 10px;
+		}
+	</style>
+
+<style>
+	ul.verdict-list {
+		list-style-type: none;
+		padding: 0;
+	}
+
+	ul.verdict-list li {
+		background-color: #f2f2f2; /* Gray background color */
+		border: 1px solid #ccc; /* Border color */
+		padding: 10px; /* Adjust padding as needed */
+		margin-bottom: 10px;
+	}
+</style>
+
+<div class="table-container">
+	<h3 style="margin-left: 500px;"> مستندات و وثائق القضية  </h3>
+    <a class="btn btn-success btn-add-client" href="#adddocumentModal" data-toggle="modal" class="button-37"> <span>اضافة ملف جديد + </span></a>
+
+    <table id="example" class="table table-hover" dir="rtl">
+        <thead class="thead-dark">
+            <tr>
+                
+                
+                <th>الملف</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="searchResults">
+            {% if documents %}
+            {% for document in documents %}
+            <tr>
+                
+				<td data-label="Document File">
+                    {% if document.file.name|lower|slice:'-4:' == '.pdf' %}
+                        <!-- Display a PDF icon -->
+						{{ document.title }}<img src="{% static 'static/img/pdf.png' %}" alt="PDF Icon" style="width: 20px; height: 20px;">
+                    {% elif document.file.name|lower|slice:'-5:' == '.doc' or document.file.name|lower|slice:'-5:' == '.docx' %}
+                        <!-- Display a Word document icon -->
+						{{ document.title }}  <img src="{% static 'static/img/mot.png' %}" alt="Word Icon"  style="width: 20px; height: 20px;">
+                    {% else %}
+                        <!-- Display a generic file icon for other file types -->
+						{{ document.title }}   <img src=" {% static 'static/img/fichier.png' %} " alt="File Icon"style="width: 20px; height: 20px;">
+                    {% endif %}
+                </td>
+                
+                <td>
+                    <a href="{{ document.file.url }}" target="_blank" class="btn btn-info btn-sm">
+                        تحميل الوثيقة
+                    </a>
+                    <a href="{% url 'delete_doc' document.id %}  " onclick="return confirm('هل تريد فعلا الحذف؟')" class="btn btn-danger btn-sm">
+                        <i class="fa-solid fa-delete-left"></i>
+                    </a>
+                </td>
+              
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="4" style="color: red;">لم يتم تحميل أي ملفات حتى الآن</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+<div id="adddocumentModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+			<form method="post" action="{% url 'add_document' Aff_id=affaire.id %}"  enctype="multipart/form-data">
+
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h4 class="modal-title">إضافة ملف جديد</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="title">اسم الملف</label>
+                        <input type="text" id="title" name="title" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="file">الملف</label>
+                        <input type="file" id="file" name="file" class="form-control" required>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">الغاء</button>
+                    <input type="submit" class="btn btn-success" value="اضافة">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<div id="verdict" class="main-container">	
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa; /* Light grey background */
+    }
+
+    .main-container {
+        margin: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .controls-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .btn-add-client {
+        background-color: #2bca75;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-add-client:hover {
+        background-color: #218c58; /* Darker shade on hover */
+    }
+
+    ul.verdict-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    ul.verdict-list li {
+        background-color: #f2f2f2; /* Gray background color */
+        border: 1px solid #ccc; /* Border color */
+        padding: 10px; /* Adjust padding as needed */
+        margin-bottom: 10px;
+    }
+</style>
+<div id="addverdictModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="{% url 'verdict' affaire.id %}">
+
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h4 class="modal-title">إضافة حكم للقضية</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="numaff">رقم القضية</label>
+                        <input type="text" id="numaff" name="numaff" class="form-control" required readonly value="{{ affaire.Naff }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="sdate">تاريخ  اصدار الحكم</label>
+                        <input type="date" id="vdate" name="vdate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sdetail">الحكم </label>
+                        <textarea id="vdetail" name="vdetail" class="form-control" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">الغاء</button>
+                    <input type="submit" class="btn btn-success" value="اضافة">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<h3 style="margin-left: 500px;"> الاحكام الصادرة</h3>
+<a  class="btn btn-success btn-add-client" href="#addverdictModal" data-toggle="modal" class="button-37"> <span>اضافة حكم  للقضية + </span></a>       
+
+{% if verdicts %}
+
+<ul class="verdict-list">
+    {% for verdict in verdicts %}
+        <li>
+            <p style="font-weight: bold; color:#13aa52; text-align: center;">
+                تاريخ اصدار الحكم: {{ verdict.date|date:"d/m/Y" }} - <br> الحكم: {{ verdict.detail }} -
+            </p>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p style="font-weight: bold; color: red; text-align: center;">     .   لم يتم تسجيل اي حكم حتى الان         </p>
+{% endif %}
+
+</div>
+	<footer id="footer" class="sm-padding bg-dark">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<div class="col-md-12">
+
+					<!-- footer logo -->
+					<div class="footer-logo">
+						<a href="index.html"><img src="{% static 'static/img/2.png' %}" alt="logo"></a>
+					</div>
+					<!-- /footer logo -->
+
+					<!-- footer follow -->
+					<ul class="footer-follow">
+						<li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+						<li><a href="#"><i class="fa-brands fa-google-plus"></i></a></li>
+						<li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+						<li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+						<li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+					</ul>
+					<!-- /footer follow -->
+
+					<!-- footer copyright -->
+					<div class="footer-copyright">
+						<p>Copyright © 2024. All Rights Reserved. </p>
+					</div>
+					<!-- /footer copyright -->
+
+				</div>
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</footer>
+	<!-- /Footer -->
+
+	<!-- Back to top -->
+	<div id="back-to-top"></div>
+	<!-- /Back to top -->
+
+	<!-- Preloader -->
+	<div id="preloader">
+		<div class="preloader">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!-- /Preloader -->
+
+	<!-- jQuery Plugins -->
+	<script type="text/javascript" src="{% static 'static/js/jquery.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'static/js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'static/js/owl.carousel.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'static/js/jquery.magnific-popup.js' %}"></script>
+	<script type="text/javascript" src="{% static 'static/js/main.js' %}"></script>
+	
+</body>
+<style>
+    @media only screen and (min-width: 768px){
+.main-nav li {
+    padding: 0px 0px;
+}}
+</style>
+<script>
+
+	
+</script>
+</html>
+
+{% endblock content %}

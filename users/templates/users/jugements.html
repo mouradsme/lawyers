@@ -1,0 +1,445 @@
+
+{% extends "users/base3.html" %}
+{% load static %}
+
+
+
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
+<!-- Select2 JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <meta charset="UTF-8">
+    <title> تسجيل قضية جديدة </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block content %}
+    <style>
+        .container1 {
+            width: 95%;
+            height: 60%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 25px 30px;
+            
+         
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            text-align: left;
+            text-align: left;
+        }
+
+       
+
+        .container2 {
+            width: 80%;
+            height: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+            position: relative;
+            text-align: right;
+            margin-top: 0.5%;
+        }
+        .container3 {
+            width: 80%;
+            height: 2%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+            position: relative;
+            text-align: right;
+            text-align: center;
+           
+            margin-top: 1%;
+        }
+        .details {
+            margin-right: 0;
+            margin-left: auto;
+            text-align: right;
+            color: #000;
+        }
+
+        .input-box {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 20px; /* Ajuster la marge selon les besoins */
+            justify-content: flex-end;
+        }
+
+        .input-box input {
+            width: 70%; /* Adjust the width of the text field as needed */
+        margin-right: 100px;
+        
+        }
+        .fiels{
+            width: 70%; /* Adjust the width of the text field as needed */
+        margin-right: 100px;
+
+        }
+        .p{
+            color: #000;
+        }
+        .button input[type="submit"] {
+        background-color: #336699;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 20px; /* You can adjust the font size */
+        font-weight: bold; /* You can adjust the font weight */
+    }
+    .button-67 {
+  align-items: center;
+  background: #f5f5fa;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: -10px -10px 30px 0 #fff,10px 10px 30px 0 #1d0dca17;
+  box-sizing: border-box;
+  color: #336699;
+  cursor: pointer;
+  display: flex;
+  font-family: "Cascadia Code",Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;
+  font-size: 1rem;
+  justify-content: center;
+  line-height: 1.5rem;
+  padding: 15px;
+  position: relative;
+  text-align: left;
+  transition: .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: pre;
+  width: max-content;
+  word-break: normal;
+  word-spacing: normal;
+}
+
+.button-67:hover {
+  background: #f8f8ff;
+  box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #1d0dca17;
+}
+
+@media (min-width: 768px) {
+  .button-67 {
+    padding: 24px;
+  }
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="container1" style="text-align: center;">
+        <a  href="{% url 'tablejugement' %}" > X</a>
+        
+    </div>
+    
+    
+    <div class="container2">
+        <p style="font-size: 18px; color: #336699; font-weight: bold;"> :   بيانات الموكل  </p>
+    
+        <form method="POST" action="{% url 'jugements' %}">
+            {% csrf_token %}
+            {{ form.errors }}
+            <div style="display: flex;">
+             
+                <div class="input-box" style="display: flex; align-items: center;">
+                    <select   id="tclient" name="tclient" class="form-control" required style="width: 200px; text-align: right; font-size: 16px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                        <option value="" selected disabled> -------------</option>
+                        {% for value, label in form.tclient.field.choices %}
+                            <option value="{{ value }}">{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                    <span class="details" style="font-size: 14px; margin-left: 10px; white-space: nowrap;">: تصنيف الموكل</span>
+                </div>
+                <script>
+                    $(document).ready(function(){
+                        $('#nomclient').select2({
+                            placeholder: 'اختر الموكل',
+                            width: '100%',
+                            dir: 'rtl'  // Right-to-left text direction
+                        });
+                    });s
+                </script>
+              <div class="input-box" style="display: flex; align-items: center;">
+                <select id="nomclient" name="nomclient" class="form-control" style="width: 200px; text-align: right; font-size: 16px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;color: #000;">
+                    <option value="" selected disabled>---------</option>
+                    {% for client in clients %}
+                        <option style="color: #000; font-weight: bold;" value="{{ client.Fname }} {{ client.Sname }}">{{ client.Fname }} {{ client.Sname }}</option>
+                    {% endfor %}
+                </select>
+                <span class="details" style="font-size: 14px; margin-left: 10px; white-space: nowrap;">:  اختر موكل  <a  class="btn btn-success btn-add-client" href="#addclientModal" style="background-color: #336699;" data-toggle="modal" class="button-37"> <span>   + </span></a></span>
+             </div>
+               
+            </div>    
+    </div>
+       
+        
+        
+           
+    <div class="container2">
+        <p style="font-size: 18px; color: #336699; font-weight: bold;"> :   بيانات الخصم  </p>
+        
+            <div class="input-box">
+                <input class="adver" type="text" placeholder="  ادخل الاسم و اللقب" id="adver" name="adver" required style="text-align: right;">
+                <span class="details">:       الخصم   </span>
+            </div>
+    
+            <div class="input-box">
+                <input class="adre" type="text" placeholder="  ادخل العنوان " id="adre" name="adre" required style="text-align: right;">
+                <span class="details"> : عنوان الخصم  </span>
+            </div>
+            <div class="input-box">
+                <input class="adre" type="text" placeholder="  0xxxxxxxxx  " id="num" name="num" required style="text-align: right;">
+                <span class="details"> :  رقم الهاتف   </span>
+            </div>
+
+        
+        <div class="input-box">
+            <input class="avocata" type="text" placeholder=" ادخل الاسم و اللقب "  id="avocata" name="avocata" required style="text-align: right;">
+            <span class="details">:   محامي الخصم  </span>
+        </div>
+        
+    </div>
+    
+    <div class="container2">
+        <p style="font-size: 18px; color: #336699; font-weight: bold;"> :   بيانات القضية  </p>
+        <div class="input-box">
+            <input class="numeroaffaire" type="text" placeholder=" ادخل رقم القضية" id="numeroaffaire" name="numeroaffaire"
+                required style="text-align: right;">
+            <span class="details">: رقم القضية</span>
+        </div>
+        <div class="input-box-container" style="display: flex; justify-content: space-between;">
+            <div class="input-box" style="display: flex; align-items: center;">
+                <select id="type" name="type" class="form-control" required style="text-align: right; font-size: 16px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                    <option value="" selected disabled>-------------</option>
+                    {% for value, label in form.type.field.choices %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+                <span class="details" style="font-size: 14px; margin-left: 10px; white-space: nowrap;">: تصنيف القضية </span>
+            </div>
+        
+            <div class="input-box" style="display: flex; align-items: center;">
+                <select id="etape" name="etape" class="form-control" required style="text-align: right; font-size: 16px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                    <option value="" selected disabled>-------------</option>
+                    {% for value, label in form.etape.field.choices %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+                <span class="details" style="font-size: 14px; margin-left: 10px; white-space: nowrap;">: مرحلة التقاضي </span>
+            </div>
+        
+            <div class="input-box" style="display: flex; align-items: center;">
+                <select id="etat" name="etat" class="form-control" required style="text-align: right; font-size: 16px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                    <option value="" selected disabled>-------------</option>
+                    {% for value, label in form.etat.field.choices %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+                <span class="details" style="font-size: 14px; margin-left: 10px; white-space: nowrap;">: حالة القضية </span>
+            </div>
+        </div>
+        
+        <p style="font-size: 18px; color: #336699; font-weight: bold;"> :    مقر المحاكمة  </p>
+
+        <div style="display: flex;">
+
+           
+          
+            <div class="input-box" style="display: flex; align-items: center;">
+              <select
+                  id="id_tribunal"
+                  name="tribunal"
+                  class="form-control"
+                  required
+                  style="text-align: right; font-size: 16px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"
+              >
+                  <option value="" selected disabled> ------------- </option>
+              </select>
+              <span class="details" style="font-size: 14px; margin-left: 10px; white-space: nowrap;">: اختر محكمة</span>
+            </div>
+            
+            <script>
+              $(document).ready(function () {
+                $("#id_conseil").change(function () {
+                  var selectedConseil = $(this).val();
+                  $.ajax({
+                    type: "GET",
+                    url: "{% url 'get_tribunals' %}",
+                    data: { conseil: selectedConseil },
+                    success: function (data) {
+                      var dropdown = $('#id_tribunal');
+                      dropdown.empty();
+                      dropdown.append('<option value="" selected disabled> ----------- </option>');
+                      $.each(data, function (key, entry) {
+                        dropdown.append($('<option></option>').attr('value', entry.value).text(entry.label));
+                      });
+                    },
+                  });
+                });
+              });
+            </script>
+             <div class="input-box" style="display: flex; align-items: center; margin-right: 10px;">
+                <select
+                  id="id_conseil"
+                  name="conseil"
+                  class="form-control"
+                  required
+                  style="text-align: right; font-size: 16px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"
+                >
+                  <option value="" selected disabled> --------- </option>
+                  <!-- Add options for Conseil -->
+                </select>
+                <span class="details" style="font-size: 14px; margin-left: 10px; white-space: nowrap;">: اختر مجلس</span>
+              </div>
+              <script>
+                $(document).ready(function () {
+                  $.ajax({
+                    type: 'GET',
+                    url: '{% url "get_conseil_data" %}',
+                    success: function (data) {
+                      var dropdown = $('#id_conseil');
+                      dropdown.empty();
+                      dropdown.append('<option value="" selected disabled>--------  </option>');
+                      $.each(data, function (key, entry) {
+                        dropdown.append($('<option></option>').attr('value', entry.id).text(entry.name));
+                      });
+                    },
+                  });
+                });
+              </script>
+          </div>
+          <div class="input-box">
+            <input type="text" placeholder="  ادخل الموضوع " id="sujeta" name="sujeta" required style="text-align: right;">
+            <span class="details"> : موضوع القضية   </span>
+          </div> 
+          <div class="input-box">
+            <input type="date" placeholder=" ادخل تاريخ تسجيل القضية     " id="datea" name="datea" required style="text-align: right;">
+            <span class="details">:  تاريخ القيد </span>
+        </div>
+        <div class="input-box">
+            <input type="text" placeholder=" ادخل مبلغ القضية "  id="budjeta" name="budjeta" required style="text-align: right;">
+            <span class="details">:  المبلغ الاجمالي للقضية  </span>
+        </div>
+        <div class="input-box">
+            <textarea placeholder="ادخل تفاصيل القضية " id="details" name="details" required style="text-align: right;"></textarea>
+            <span class="details">:   تفاصيل القضية </span>
+        </div>
+        
+</div>
+
+
+
+  
+{% if form.errors %}
+<div class="alert alert-danger">
+    <strong>Error!</strong> Please correct the following errors:
+    <ul>
+        {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+                <li>{{ field|title }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+
+    <div class="container3">
+      <div class="button">
+        <input type="submit" value="تسجيل">
+       </div>
+    </div>
+</div>
+
+</form>
+
+        <div id="addclientModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="POST" action="{% url 'pclients' %}">
+                        {% csrf_token %}
+                        {{ form.errors }}
+                        <div class="modal-header" >                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-header"  style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                            <h4 class="modal-title" style="font-size: 18px; color: black; font-weight: bold; margin-left: auto;">إضافة موكل </h4>
+                        </div>
+                        <div class="input-box" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                            <p style="font-size: 18px; color: #336699; font-weight: bold; margin-left: auto;"> : معلومات   الموكل</p>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-box" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                <input class="input1" type="text" placeholder="ادخل الاسم" id="Prenom" name="Prenom" required style="text-align: right; width: 400px;">
+                                <span class="details" style="margin-right: 10px;">: الاسم</span>
+                            </div>
+                            
+                            <div class="input-box" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                <input class="input1" type="text" placeholder="ادخل اللقب" id="Nom" name="Nom" required style="text-align: right; width: 400px;">
+                                <span class="details" style="margin-right: 10px;"> : اللقب</span>
+                            </div>
+                            
+                            <div class="input-box" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                <input class="input1" type="date" placeholder="ادخل تاريخ الميلاد" id="date" name="date" required style="text-align: right; width: 400px;">
+                                <span class="details" style="margin-right: 10px;">: تاريخ الميلاد</span>
+                            </div>
+                            
+                            <div class="input-box" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                <input class="input1" type="text" placeholder="ادخل البريد الالكتروني" id="email" name="email" required style="text-align: right; width: 400px;">
+                                <span class="details" style="margin-right: 10px;"> : البريد الالكتروني</span>
+                            </div>
+                            
+                            <div class="input-box" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                <input class="input1" type="text" placeholder="ادخل رقم الهاتف" id="Numero" name="Numero" required style="text-align: right; width: 400px;">
+                                <span class="details" style="margin-right: 10px;">: رقم الهاتف</span>
+                            </div>
+                            
+                            <div class="input-box" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                <input class="input1" type="text" placeholder="ادخل العنوان" id="adresse" name="adresse" required style="text-align: right; width: 400px;">
+                                <span class="details" style="margin-right: 10px;"> : العنوان</span>
+                            </div>
+                            <div class="input-box" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                <p style="font-size: 18px; color: #336699; font-weight: bold; margin-left: auto;"> : معلومات بطاقة التعريف الوطنية</p>
+                            </div>
+                            
+                            <div class="input-box" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                <input class="input1" type="text" placeholder="ادخل رقم بطاقة التعريف الوطنية" id="carte" name="carte" style="text-align: right; width: 400px;">
+                                <span class="details" style="margin-right: 10px;">: رقم البطاقة</span>
+                            </div>
+                            
+                            <div class="input-box" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                                <input class="input1" type="date" placeholder="ادخل تاريخ انتهاء بطاقة التعريف الوطنية" id="cdate" name="cdate" style="text-align: right; width: 400px;">
+                                <span class="details" style="margin-right: 10px;">: تاريخ انتهاء الصلاحية </span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">الغاء</button>
+                            <input type="submit" class="btn btn-success" value="اضافة">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+</div>
+</body>
+</html>
+{% include 'users/footer.html' %}
+{% endblock content %}

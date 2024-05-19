@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>قائمة الأخبار</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CVarela+Round" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}" />
+
+    <!-- Owl Carousel -->
+    <link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.carousel.css' %}" />
+    <link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.theme.default.css' %}" />
+
+    <!-- Magnific Popup -->
+    <link type="text/css" rel="stylesheet" href="{% static 'static/css/magnific-popup.css' %}" />
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="{% static 'static/css/font-awesome.min.css' %}">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="{% static 'static/css/style.css' %}" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto; /* توسيط أفقياً */
+            padding: 0 20px; /* إضافة بعض التباعد الأفقي */
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #666;
+        }
+        .actions {
+            display: inline-block;
+            float: right;
+        }
+        .update {
+            color: #007bff;
+            margin-right: 10px;
+        }
+        .delete {
+            color: #dc3545;
+        }
+        form {
+            display: inline-block;
+        }
+        input[type="submit"] {
+            background-color: transparent;
+            border: none;
+            color: #dc3545;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            color: #bd2130;
+        }
+
+        .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            size: 50px;
+            height: 250px;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>قائمة الأخبار</h1>
+        <ul>
+            <!--  {% for news in news_articles %}
+                <li>
+                    <a href="{% url 'news_detail' pk=news.pk %}">{{ news.title }}</a>
+
+                    <div class="actions">
+                        
+                        <a class="update" href="{% url 'update_news' pk=news.pk %}">تحديث</a>
+
+                        
+                        <form action="{% url 'delete_news' pk=news.pk %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" class="delete" value="حذف">
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}-->
+        </ul>
+    </div>
+</body>
+</html>
+
+
+
+<div id="blog" class="section md-padding bg-grey">
+
+    <!-- الحاوية -->
+    <div class="container">
+
+        <!-- الصف -->
+        <div class="row">
+{% for news in news_articles %}
+            <!-- رأس القسم -->
+            
+            <!-- /رأس القسم -->
+
+            <!-- المدونة -->
+            <div class="col-md-4">
+                <h5 class="title"><a href="{% url 'news_detail' pk=news.pk %}">{{ news.title }}</a> </h5>
+                
+                <div class="blog">
+                    {% if news.photo %}
+                    <div class="blog-img">
+                        <img class="img-responsive" src="{{ news.photo.url }}" alt="{{ news.title }}">
+                    </div>
+                    {% endif %}
+                    <div class="blog-content">
+                        <ul class="blog-meta">
+                            
+                            <p>{{ news.content|truncatechars:100 }}</p>
+                            
+                        </ul>
+                        
+                        <p>الكاتب: {{ news.author.username }}</p>
+                        <p>تم الإنشاء في: {{ news.created_at }}</p>
+                        <p>تم التحديث في: {{ news.updated_at }}</p>
+                        
+                    
+                    <div class="actions">
+                        <!-- رابط التحديث -->
+                        <a class="update" href="{% url 'update_news' pk=news.pk %}">تحديث</a>
+
+                        <!-- نموذج الحذف -->
+                        <form action="{% url 'delete_news' pk=news.pk %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" class="delete" value="حذف">
+                        </form>
+                    </div></div>
+                </div>
+            </div>
+            <!-- /المدونة -->
+{% endfor %}
+
+        </div>
+        <!-- /الصف -->
+
+    </div>
+    <!-- /الحاوية -->
+
+</div>
+<!-- /المدونة -->

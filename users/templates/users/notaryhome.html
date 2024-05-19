@@ -1,0 +1,485 @@
+{% extends "users/notrbase.html" %}
+{% load static %}
+
+{% block title %} الصفحة الرئيسية {% endblock title%}
+{% block content %}
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}" />
+    
+	<!-- Owl Carousel -->
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.carousel.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.theme.default.css' %}" />
+
+	<!-- Magnific Popup -->
+	<link type="text/css" rel="stylesheet" href="{% static 'static/css/magnific-popup.css' %}" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="{% static 'static/css/font-awesome.min.css' %}">
+
+  <style>   
+	.button3,.button2,.button1 {
+		appearance: none;
+backface-visibility: hidden;
+background-color: #2f80ed;
+border-radius: 10px;
+border-style: none;
+box-shadow: none;
+box-sizing: border-box;
+color: #fff;
+cursor: pointer;
+display: inline-block;
+font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+font-size: 15px;
+font-weight: 500;
+height: 50px;
+letter-spacing: normal;
+line-height: 1.5;
+outline: none;
+overflow: hidden;
+padding: 14px 30px;
+position: relative;
+text-align: center;
+text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+background-image: linear-gradient(92.88deg, #455EB5 9.16%, #095ee7 43.89%, #095ee7 64.72%);
+text-decoration: none;
+transform: translate3d(0, 0, 0);
+transition: all .3s;
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+vertical-align: top;
+white-space: nowrap;
+padding: 60px 60px;
+
+} 
+</style>   
+    <!-- About -->
+	<div id="about" class="section md-padding">
+
+		<!-- Container -->
+		<div class="container" >
+			<div class="bg-img" >
+				<style>
+					.bg-img {
+						background-image: url('{% static "static/img/notaryhome.jpg" %}');
+						
+					}
+	
+	
+				</style>
+				<div class="overlay"></div>
+			</div>
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Section header -->
+				<div class="section-header text-center">
+					
+					<h2 class="title" style="color: white;"> مرحبًا السيد الموثق  {{ user.first_name.title }}  {{ user.last_name.title }}</h2>
+				</div>
+				<!-- /Section header -->
+
+				<link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+				<link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+				<link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+				<!-- about -->
+				
+				
+				<!-- /about -->
+
+				<!-- about -->
+				
+				<!-- /about -->
+
+				<!-- about -->
+				
+				<!-- /about -->
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</div>
+
+	
+
+	<!-- /Service -->
+
+
+	<!-- Why Choose Us -->
+	<div id="features" class="section md-padding bg-grey">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+				<div class="col-md-6">
+					<div id="about-slider" class="owl-carousel owl-theme">
+						<img class="img-responsive" src="{% static 'static/img/img1.webp' %}" alt="">
+						<img class="img-responsive" src="{% static 'static/img/img2.webp' %}" alt="">
+						<img class="img-responsive" src="{% static 'static/img/img3.webp' %}" alt="">
+						<img class="img-responsive" src="{% static 'static/img/img4.webp' %}" alt="">
+					</div>
+				</div>
+				<!-- why choose us content -->
+				<div class="col-md-6">
+					<div class="section-header">
+						<h2 class="title">  الموثق  ؟</h2>
+					</div>
+					<p>
+						. الموثق ضابط عمومي، مفوض من قبل السلطة العمومية يتولى تسيير مكتب عمومي لحسابه الخاص وتحت مسؤوليته، يتولى تحرير العقود التي يشترط فيها القانون الصبغة الرسمية وكذا العقود التي يرغب الأشخاص إعطاءها هذه الصبغة</p> <br> <p style="text-align:right; color: #095ee7;"><strong>النصوص القانونية المنظمة للمهنة:</strong></p>
+
+					  
+					<div class="feature">
+						<i class="fa fa-check"></i>
+						<p style="text-align:right; ">   – القانون رقم 06-02 المؤرّخ في 20 فبراير سنة 2006، المتضمّن تنظيم مهنة الموثّق.     </p>
+					</div>
+					<div class="feature">
+						<i class="fa fa-check"></i>
+						<p style="text-align:right; ">   – المرسوم التنفيذي رقم 08-242 المؤرخ في 3 غشت سنة 2008، المحدد لشروط الالتحاق بمهنة الموثق وممارستها ونظامها التأديبي وقواعد تنظيمها، تم تعديله بموجب المرسوم التنفيذي رقم 18-84 المؤرخ في 5 مارس سنة 2018. </p>
+					</div>
+					<div class="feature">
+						<i class="fa fa-check"></i>
+						<p style="text-align:right; ">.   – المرسوم التنفيذي رقم 08-243 المؤرخ في 3 غشت سنة 2008، المحدد لأتعاب الموثق.
+
+						</p>
+					</div>
+					<div class="feature">
+						<i class="fa fa-check"></i>
+						<p style="text-align:right; ">   – المرسوم التنفيذي رقم 08-244 المؤرخ في 3 غشت 2008 المحدد لكيفيات مسك محاسبة الموثق ومراجعتها.
+
+
+
+						</p>
+					</div>
+					<div class="feature">
+						<i class="fa fa-check"></i>
+						<p style="text-align:right; ">   – المرسوم التنفيذي رقم 08-245 المؤرخ في 3 غشت 2008 المحدد لشروط وكيفيات تسيير الأرشيف التوثيقي وحفظه.
+
+
+
+
+
+						</p>
+					</div>
+					<div class="feature">
+						<i class="fa fa-check"></i>
+						<p style="text-align:right; ">     – القرار المؤرخ في 21 يوليو 1991 المتضمن النظام الداخلي للمجلس الأعلى للتوثيق.
+
+
+
+
+
+
+
+						</p>
+					</div>
+					<div class="feature">
+						<i class="fa fa-check"></i>
+						<p style="text-align:right; ">     – القرار المؤرخ في 14 نوفمبر 1992 المتضمن النظام الداخلي للغرفة الوطنية للموثقين.
+
+
+
+
+
+
+
+
+
+						</p>
+					</div>
+					<div class="feature">
+						<i class="fa fa-check"></i>
+						<p style="text-align:right; ">              – القرار المؤرخ في 14 نوفمبر 1992 المتضمن النظام الداخلي للغرف الجهوية  للموثقين.  
+
+							.
+
+
+
+
+
+
+
+						</p>
+					</div>
+				</div>
+				<!-- /why choose us content -->
+
+				<!-- About slider -->
+			
+				<!-- /About slider -->
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</div>
+	<!-- /Why Choose Us -->
+
+
+	
+
+	<!-- Blog -->
+	<div id="blog" class="section md-padding bg-grey">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Section header -->
+				<div class="section-header text-center">
+					<h2 class="title"> اخر الاخبار</h2>
+				</div>
+				<!-- /Section header -->
+
+				<!-- blog -->
+				<div class="col-md-4">
+					<div class="blog">
+						<div class="blog-img">
+							<img class="img-responsive" src="{% static 'static/img/news1.jpg' %}" alt="">
+						</div>
+						<div class="blog-content">
+							<ul class="blog-meta">
+								<li><i class="fa fa-user"></i>John doe</li>
+								<li><i class="fa fa-clock-o"></i>18 Oct</li>
+								<li><i class="fa fa-comments"></i>57</li>
+							</ul>
+							<h3>اعلان الترشح للمشاركة كخبراء سواء كمتدخلين و/أو منشطين في مختلف الندوات واللقاءات التي تنظمها الهيئات الأممية</h3>
+							<p>في إطار تعزير مشاركة الخبراء الجزائريين سواء كمتدخلين و/أو منشطين في مختلف الندوات واللقاءات التي تنظمها الهيئات الأممية، من الذين يتقنون اللغتين العربية والانجليزية، ولهم خبرة في مجال التنمية المستدامة سيما في المسائل التالية:
+
+								– التغير المناخي (Changement climatique)
+								
+								– التمويل المناخي (Finance climatique)
+								
+								– التنوع البيولوجي ( Biodiversité)
+								
+								– التصحر (Désertification)
+								
+								– تمويل التنمية (Financement du développement)
+								
+								– التكنولوجيات الجديدة والذكاء الاصطناعي (Nouvelles technologies et Intelligence artificielle)
+								
+								– الأمن الغذائي والأنظمة الغذائية Sécurité et systèmes alimentaires)
+								
+								– الموارد المائية (Ressources hydriques)
+								
+								– مكافحة الفقر والمساعدة الاجتماعية (Lutte contre la pauvreté et assistance sociale)
+								
+								– الحوكمة (Gouvernance).
+								
+								يشرفنا دعوة القضاة والإطارات العاملين بالجهات القضائية والإدارة المركزية لوزارة العدل والمؤسسات تحت الوصاية من الذين يتقنون اللغتين العربية والانجليزية، ولهم خبرة في مجال التنمية المستدامة الراغبين في الترشيح كخبراء سواء متدخلين و/أو منشطين في مختلف الندوات واللقاءات التي تنظمها الهيئات الأممية، سيما في المسائل المذكورة أعلاه، إلى تقديم طلب ترشحهم مرفقا ببطاقة السيرة الذاتية ووصف مفصل لمجالات تخصصهم باللغتين العربية والانجليزية وإرسالها عن طريق السلطة السلمية عبر البريد الالكتروني لمديرية التكوين ODDO لوزارة العدل، قبل تاريخ 31 مارس 2024..</p>
+							<a href="blog-single.html">Read more</a>
+						</div>
+					</div>
+				</div>
+				<!-- /blog -->
+
+				<!-- blog -->
+				<div class="col-md-4">
+					<div class="blog">
+						<div class="blog-img">
+							<img class="img-responsive" src="{% static 'static/img/news1.jpg' %}" alt="">
+						</div>
+						<div class="blog-content">
+							<ul class="blog-meta">
+								<li><i class="fa fa-user"></i>John doe</li>
+								<li><i class="fa fa-clock-o"></i>18 Oct</li>
+								<li><i class="fa fa-comments"></i>57</li>
+							</ul>
+							<h3>اليوم الوطني للمحامي 23 مارس 2024</h3>
+							<p>بمناسبة إحياء اليوم الوطني للمحامي المصادف لـ 23 مارس من كل عام، بعث وزير العدل، حافظ الأختام السيد عبد الرشيد طبي رسالة تهنئة إلى السيد رئيس الاتحاد الوطني لمنظمات المحامين هنئه فيها وكل أعضاء الاتحاد وأسرة الدفاع في كافة أرجاء الوطن بهذه المناسبة، مثمنا فيها جهودهم من أجل تكريس أحد أهم مبادئ المحاكمة العادلة وهو الحق في الدفاع، متمنيا لهم النجاح والتوفيق في أداء مهمتهم النبيلة.
+								للتذكير فإن اليوم الوطني للمحامي يصادف ذكرى استشهاد المحامي المناضل علي بومنجل رحمة الله عليه..</p>
+							<a href="blog-single.html">Read more</a>
+						</div>
+					</div>
+				</div>
+				<!-- /blog -->
+
+				<!-- blog -->
+				<div class="col-md-4">
+					<div class="blog">
+						<div class="blog-img">
+							<img class="img-responsive"  src="{% static 'static/img/news1.jpg' %}" alt="">
+						</div>
+						<div class="blog-content">
+							<ul class="blog-meta">
+								<li><i class="fa fa-user"></i>John doe</li>
+								<li><i class="fa fa-clock-o"></i>18 Oct</li>
+								<li><i class="fa fa-comments"></i>57</li>
+							</ul>
+							<h3>فتح مسابقة الالتحاق بالتكوين للحصول على شهادة الكفاءة لمهنة للمحاماة</h3>
+							<p>تعلن وزارة العدل عن فتح مسابقة الالتحاق بالتكوين للحصول على شهادة الكفاءة لمهنة المحاماة يومي 17 و18 سبتمبر، يـمكن أن يشارك في المسابقة أي شخص يرغب في الالتحاق بمهنة المحاماة تتوفر فيه الشروط المذكورة أدناه.
+
+								تودع ملفات الترشح من 02 جويلية 2022 إلى 16 جويلية 2022 بكليات الحقوق لباتنة، بجاية بسكرة، البليدة 02 تلمسان، تيزي وزو، الجزائر 1، سطيف 2، سيدي بلعباس، عنابة، قسنطينة1 المسيلة، ورقلة، وهران، برج بوعريريج.
+								
+								يمكن للمترشحين بولايات الجنوب إيداع ملفات ترشحهم على مستوى الملحقات المفتوحة بالكليات التالية: أدرار، تامنغست، إليزي، بشار، تندوف، غرداية..</p>
+							<a href="blog-single.html">Read more</a>
+						</div>
+					</div>
+				</div>
+				<!-- /blog -->
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</div>
+	<!-- /Blog -->
+
+	<!-- Contact -->
+	<div id="contact" class="section md-padding">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Section-header -->
+				<div class="section-header text-center">
+					<h2 class="title"> تواصل معنا</h2>
+				</div>
+				<!-- /Section-header -->
+
+				<!-- contact -->
+				<div class="col-sm-4">
+					<div class="contact">
+						<i class="fa fa-phone"></i>
+						<h3>رقم الهاتف</h3>
+						<p>512-421-3940</p>
+					</div>
+				</div>
+				<!-- /contact -->
+
+				<!-- contact -->
+				<div class="col-sm-4">
+					<div class="contact">
+						<i class="fa fa-envelope"></i>
+						<h3>البريد الالكتروني</h3>
+						<p>email@support.com</p>
+					</div>
+				</div>
+				<!-- /contact -->
+
+				<!-- contact -->
+				<div class="col-sm-4">
+					<div class="contact">
+						<i class="fa fa-map-marker"></i>
+						<h3>العنوان</h3>
+						<p>تيارت ,الجزائر  </p>
+					</div>
+				</div>
+				<!-- /contact -->
+
+				<!-- contact form -->
+				<div class="col-md-8 col-md-offset-2">
+					<form class="contact-form">
+						<input type="text" class="input" placeholder="الاسم و اللقب">
+						<input type="email" class="input" placeholder="البريد الالكتروني">
+						<input type="text" class="input" placeholder="الموضوع">
+						<textarea class="input" placeholder="الرسالة"></textarea>
+						<button class="main-btn">ارسل رسالة </button>
+					</form>
+				</div>
+				<!-- /contact form -->
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</div>
+	<!-- /Contact -->
+
+
+	<!-- Footer -->
+	<footer id="footer" class="sm-padding bg-dark">
+
+		<!-- Container -->
+		<div class="container">
+
+			<!-- Row -->
+			<div class="row">
+
+				<div class="col-md-12">
+
+					<!-- footer logo -->
+					<div class="footer-logo">
+						<a href="index.html"><img src="{% static 'static/img/2.png' %}" alt="logo"></a>
+					</div>
+					<!-- /footer logo -->
+
+					<!-- footer follow -->
+					<ul class="footer-follow">
+						<li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+						<li><a href="#"><i class="fa-brands fa-google-plus"></i></a></li>
+						<li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+						<li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+						<li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+					</ul>
+					<!-- /footer follow -->
+
+					<!-- footer copyright -->
+					<div class="footer-copyright">
+						<p>Copyright © 2024. All Rights Reserved. </p>
+					</div>
+					<!-- /footer copyright -->
+
+				</div>
+
+			</div>
+			<!-- /Row -->
+
+		</div>
+		<!-- /Container -->
+
+	</footer>
+	<!-- /Footer -->
+
+	<!-- Back to top -->
+	<div id="back-to-top"> <i class="fa-solid fa-up-long"></i></div>
+	<!-- /Back to top -->
+
+	<!-- Preloader -->
+	<div id="preloader">
+		<div class="preloader">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<!-- /Preloader -->
+
+	<!-- jQuery Plugins -->
+	<script type="text/javascript" src="{% static 'static/js/jquery.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'static/js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'static/js/owl.carousel.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'static/js/jquery.magnific-popup.js' %}"></script>
+	<script type="text/javascript" src="{% static 'static/js/main.js' %}"></script>
+	
+</body>
+<style>
+    @media only screen and (min-width: 768px){
+.main-nav li {
+    padding: 0px 0px;
+}}
+</style>
+<script>
+
+	
+</script>
+</html>
+
+{% endblock content %}

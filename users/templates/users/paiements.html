@@ -1,0 +1,50 @@
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+<div id="addpayModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="{% url 'paiements' affaire.id %}">
+
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h4 class="modal-title"> </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="stitre">المبلغ المدفوع  </label>
+                        <input type="number" id="versement" name="versement" class="form-control" required>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="sdate">تاريخ وتوقيت الدفع</label>
+                        <input type="datetime-local" id="pdate" name="pdate" class="form-control" required>
+                    </div>
+                 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">الغاء</button>
+                    <input type="submit" class="btn btn-success" value="اضافة">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<table>
+    <tr>
+        <th>المبلغ المدفوع</th>
+        <th>تاريخ و توقيت الدفع</th>
+    </tr>
+    {% if paiements %}
+        {% for i in paiements %}
+            <tr>
+                <td data-label="Amount">{{ i.versement }}</td>
+                <td data-label="Customer Name">{{ i.date|date:"Y-m-d H:i" }}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td colspan="2" >   .   لم يتم الدفع حتى الان  </td>
+        </tr>
+    {% endif %}
+</table>

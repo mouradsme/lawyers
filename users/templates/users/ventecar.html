@@ -1,0 +1,288 @@
+
+{% extends "users/notrbase.html" %}
+{% load static %}
+
+
+
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
+<!-- Select2 JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <meta charset="UTF-8">
+    <title> تسجيل  عقد بيع </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block content %}
+    <style>
+        .container1 {
+            width: 95%;
+            height: 60%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 25px 30px;
+            
+         
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            text-align: left;
+            text-align: left;
+        }
+
+       
+
+        .container2 {
+            width: 80%;
+            height: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+            position: relative;
+            text-align: right;
+            margin-top: 0.5%;
+        }
+        .container3 {
+            width: 80%;
+            height: 2%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+            position: relative;
+            text-align: right;
+            text-align: center;
+           
+            margin-top: 1%;
+        }
+        .details {
+            margin-right: 0;
+            margin-left: auto;
+            text-align: right;
+            color: #000;
+        }
+
+        .input-box {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 20px; /* Ajuster la marge selon les besoins */
+            justify-content: flex-end;
+        }
+
+        .input-box input {
+            width: 70%; /* Adjust the width of the text field as needed */
+        margin-right: 100px;
+        
+        }
+        .fiels{
+            width: 70%; /* Adjust the width of the text field as needed */
+        margin-right: 100px;
+
+        }
+        .p{
+            color: #000;
+        }
+        .button input[type="submit"] {
+        background-color: #336699;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 20px; /* You can adjust the font size */
+        font-weight: bold; /* You can adjust the font weight */
+    }
+    .button-67 {
+  align-items: center;
+  background: #f5f5fa;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: -10px -10px 30px 0 #fff,10px 10px 30px 0 #1d0dca17;
+  box-sizing: border-box;
+  color: #336699;
+  cursor: pointer;
+  display: flex;
+  font-family: "Cascadia Code",Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;
+  font-size: 1rem;
+  justify-content: center;
+  line-height: 1.5rem;
+  padding: 15px;
+  position: relative;
+  text-align: left;
+  transition: .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: pre;
+  width: max-content;
+  word-break: normal;
+  word-spacing: normal;
+}
+
+.button-67:hover {
+  background: #f8f8ff;
+  box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #1d0dca17;
+}
+
+@media (min-width: 768px) {
+  .button-67 {
+    padding: 24px;
+  }
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="container2">
+        <p style="font-size: 18px; color: #336699; font-weight: bold; margin-right: 400px;"> :     عقد بيع مركبة   </p>
+
+    </div>
+           
+    <div class="container2">
+        <p style="font-size: 18px; color: #336699; font-weight: bold;"> :    معلومات البائع  </p>
+        <form method="POST" action="{% url 'ventecar' %}">
+            {% csrf_token %}
+            {{ form.errors }}   
+            <div class="input-box">
+                <input class="vendeur" type="text" placeholder="  ادخل الاسم و اللقب" id="vendeur" name="vendeur" required style="text-align: right;">
+                <span class="details">:       الاسم الكامل   </span>
+            </div>
+    
+            <div class="input-box">
+                <input class="vdate" type="date" placeholder="  ادخل العنوان " id="vdate" name="vdate" required style="text-align: right;">
+                <span class="details"> : تاريخ الميلاد  </span>
+            </div>
+            <div class="input-box">
+                <input class="vlieu" type="text" placeholder="  بلدية و ولاية الميلاد  " id="vlieu" name="vlieu" required style="text-align: right;">
+                <span class="details"> :  مكان الميلاد    </span>
+            </div>
+
+        
+        <div class="input-box">
+            <input class="vnumcarte" type="number" placeholder=" ادخل الاسم و اللقب "  id="vnumcarte" name="vnumcarte" required style="text-align: right;">
+            <span class="details">:    بطاقة التعريف رقم   </span>
+        </div>
+        <div class="input-box">
+            <input class="vdatecarte" type="date" placeholder="  "  id="vdatecarte" name="vdatecarte" required style="text-align: right;">
+            <span class="details">:      تاريخ الصدور   </span>
+        </div>
+        <div class="input-box">
+            <input class="vlieucarte" type="text" placeholder="    "  id="vlieucarte" name="vlieucarte" required style="text-align: right;">
+            <span class="details">:       عن   </span>
+        </div>
+        <div class="input-box">
+            <input class="vadresse" type="text" placeholder="  "  id="vadresse" name="vadresse" required style="text-align: right;">
+            <span class="details">:       السكن   </span>
+        </div>
+    </div>
+    
+    <div class="container2">
+        <p style="font-size: 18px; color: #336699; font-weight: bold;"> :    معلومات المشتري  </p>
+        
+            <div class="input-box">
+                <input class="acheteur" type="text" placeholder="  ادخل الاسم و اللقب" id="acheteur" name="acheteur" required style="text-align: right;">
+                <span class="details">:       الاسم الكامل   </span>
+            </div>
+    
+            <div class="input-box">
+                <input class="adate" type="date" placeholder="  ادخل العنوان " id="adate" name="adate" required style="text-align: right;">
+                <span class="details"> : تاريخ الميلاد  </span>
+            </div>
+            <div class="input-box">
+                <input class="alieu" type="text" placeholder="  بلدية و ولاية الميلاد  " id="alieu" name="alieu" required style="text-align: right;">
+                <span class="details"> :  مكان الميلاد    </span>
+            </div>
+
+        
+        <div class="input-box">
+            <input class="anumcarte" type="number" placeholder=" ادخل الاسم و اللقب "  id="anumcarte" name="anumcarte" required style="text-align: right;">
+            <span class="details">:    بطاقة التعريف رقم   </span>
+        </div>
+        <div class="input-box">
+            <input class="adatecarte" type="date" placeholder="  "  id="adatecarte" name="adatecarte" required style="text-align: right;">
+            <span class="details">:      تاريخ الصدور   </span>
+        </div>
+        <div class="input-box">
+            <input class="alieucarte" type="text" placeholder="    "  id="alieucarte" name="alieucarte" required style="text-align: right;">
+            <span class="details">:       عن   </span>
+        </div>
+        <div class="input-box">
+            <input class="aadresse" type="text" placeholder="  "  id="aadresse" name="aadresse" required style="text-align: right;">
+            <span class="details">:       السكن   </span>
+        </div>
+    </div>
+    <div class="container2">
+  
+        <div class="input-box">
+            <input class="source" type="text" placeholder="  ادخل الاسم و اللقب" id="source" name="source" required style="text-align: right;">
+            <span class="details">:       المصدر    </span>
+        </div>
+
+        
+    
+</div>
+<div class="container2">
+    <p style="font-size: 18px; color: #336699; font-weight: bold;"> :     معلومات السيارة    </p>
+    
+    <div class="input-box">
+        <input class="typec" type="text" placeholder="  ادخل الاسم و اللقب" id="typec" name="typec" required style="text-align: right;">
+        <span class="details">:        نوع المركبة   </span>
+    </div>
+
+    <div class="input-box">
+        <input class="colorc" type="text" placeholder="    " id="colorc" name="colorc" required style="text-align: right;">
+        <span class="details"> :  لون المركبة  </span>
+    </div>
+  
+<div class="input-box">
+    <input class="numc" type="text" placeholder=" ادخل الاسم و اللقب "  id="numc" name="numc" required style="text-align: right;">
+    <span class="details">:      الرقم التسلسلي    </span>
+</div>
+ 
+</div>
+   
+</div>
+
+
+
+  
+{% if form.errors %}
+<div class="alert alert-danger">
+    <strong>Error!</strong> Please correct the following errors:
+    <ul>
+        {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+                <li>{{ field|title }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+
+    <div class="container3">
+      <div class="button">
+        <input type="submit" value="تسجيل">
+       </div>
+    </div>
+</div>
+
+</form>
+
+   
+</div>
+</body>
+</html>
+{% include 'users/footer.html' %}
+{% endblock content %}

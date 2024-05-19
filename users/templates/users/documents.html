@@ -1,0 +1,98 @@
+{% load static %}
+<div id="documents" class="main-container">
+   
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<style>
+		ul.verdict-list {
+			list-style-type: none;
+			padding: 0;
+		}
+	
+		ul.verdict-list li {
+			background-color: #f2f2f2; /* Gray background color */
+			border: 1px solid #ccc; /* Border color */
+			padding: 10px; /* Adjust padding as needed */
+			margin-bottom: 10px;
+		}
+	</style>
+
+<div class="table-container">
+    <a class="btn btn-success btn-add-client" href="#adddocumentModal" data-toggle="modal" class="button-37"> <span>اضافة ملف جديد + </span></a>
+
+    <table id="example" class="table table-hover" dir="rtl">
+        <thead class="thead-dark">
+            <tr>
+                <th>رقم الدفعة</th>
+                
+                <th>الملف</th>
+                <th>العمليات</th>
+            </tr>
+        </thead>
+        <tbody id="searchResults">
+            {% if Documents %}
+            {% for document in documents %}
+            <tr>
+                <td data-label="Amount">{{ document.id }}</td>
+				<td data-label="Document File">
+                    {% if document.file.name|lower|slice:'-4:' == '.pdf' %}
+                        <!-- Display a PDF icon -->
+						{{ document.title }}<img src="{% static 'static/img/pdf.png' %}" alt="PDF Icon" style="width: 20px; height: 20px;">
+                    {% elif document.file.name|lower|slice:'-5:' == '.doc' or document.file.name|lower|slice:'-5:' == '.docx' %}
+                        <!-- Display a Word document icon -->
+						{{ document.title }}  <img src="{% static 'static/img/mot.png' %}" alt="Word Icon"  style="width: 20px; height: 20px;">
+                    {% else %}
+                        <!-- Display a generic file icon for other file types -->
+						{{ document.title }}   <img src=" {% static 'static/img/fichier.png' %} " alt="File Icon"style="width: 20px; height: 20px;">
+                    {% endif %}
+                </td>
+                
+                <td>
+                    <a href="{{ document.file.url }}" target="_blank" class="btn btn-info btn-sm">
+                        تحميل الوثيقة
+                    </a>
+                    <a href="" onclick="return confirm('هل تريد فعلا الحذف؟')" class="btn btn-danger btn-sm">
+                        <i class="fa-solid fa-delete-left"></i>
+                    </a>
+                </td>
+              
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="4" style="color: red;">لم يتم تحميل أي ملفات حتى الآن</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+<div id="adddocumentModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="{% url 'add_document' affaire.id %}" enctype="multipart/form-data">
+
+                {% csrf_token %}
+                <div class="modal-header">
+                    <h4 class="modal-title">إضافة ملف جديد</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="title">اسم الملف</label>
+                        <input type="text" id="title" name="title" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="file">الملف</label>
+                        <input type="file" id="file" name="file" class="form-control" required>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">الغاء</button>
+                    <input type="submit" class="btn btn-success" value="اضافة">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

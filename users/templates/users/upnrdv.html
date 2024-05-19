@@ -1,0 +1,40 @@
+{% extends "users/notrbase.html" %}
+{% load static %}
+
+{% block content %}
+<div class="modal-dialog">
+    <div class="modal-content">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.errors }}
+            <div class="modal-header">
+                <h4 class="modal-title">تعديل الموعد</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <label for="edit_nomprenom" class="col-sm-3 col-form-label">: لقب و اسم الموكل</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" type="text" id="edit_nomprenom" name="edit_nomprenom" value="{{ nrdv.fullname }}" style="direction: rtl;" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="edit_date" class="col-sm-3 col-form-label">: تاريخ وتوقيت</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" type="datetime-local" id="edit_date" name="edit_date" value="{% if nrdv.date %}{{ nrdv.date|date:"Y-m-d" }}T{{ nrdv.date|time:"H:i" }}{% endif %}" required style="text-align: right;">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="edit_remarques" class="col-sm-3 col-form-label">: تفاصيل اخرى</label>
+                    <div class="col-sm-9">
+                        <textarea class="form-control" id="edit_remarques" name="edit_remarques" required style="text-align: right;"> {{ nrdv.remarques }}</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="history.back()">الغاء</button>
+                <input type="submit" class="btn btn-success" value="تحديث">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

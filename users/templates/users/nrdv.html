@@ -1,0 +1,165 @@
+{% extends "users/notrbase.html" %}
+{% load static %}
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المواعيد</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+    <!-- Include the Arabic locale file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/locale/ar.js"></script>
+    
+
+</head>
+{% block content %}
+
+<body>
+    <link href="{% static 'fontawesomefree/css/fontawesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/brands.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'fontawesomefree/css/solid.css' %}" rel="stylesheet" type="text/css">
+<div class="container1" style="margin-top: 1%; margin-left: 20%;">
+    <div class="row" >
+        <a class="btn btn-success btn-add-client" href="#addrdvModal" data-toggle="modal" class="button-37" style="color: white; font-size: 18px;"> <span>اضافة موعد  + </span></a>
+      
+    </div>
+</div>
+
+
+
+  
+
+    <div class="container0" style="   max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); ">
+        <h3 style=" color: #333;
+        text-align: center;">المواعيد القادمة</h3>
+        <ul style="  list-style-type: none;
+        padding: 0;">
+            {% for rdv in upcoming_rendezvous %}
+            <li style="margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;">
+     <div style="margin-right: 20px;">
+         <a href="{% url 'delete_nrdvs' rdv.id %}"  onclick="return confirm('هل تريد فعلا الحذف ؟')" class="btn btn-danger btn-sm">
+             <i class="fa-solid fa-delete-left"></i>
+         </a>
+         <a href="{% url 'update_nrdv' rdv.id %}" class="btn btn-info btn-sm">
+            <i class="fa-solid fa-pen-to-square"></i>
+        </a>
+     </div>
+     <div style="flex: 1;">
+         <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+             {{ rdv.date|date:"H:i - Y /m /d" }} 
+             <strong style="font-weight: bold; color: #333;">{{ rdv.fullname }}</strong>
+         </div>
+         <div class="appointment-info" style="margin-top: 10px; color: #666; overflow-wrap: break-word;">
+             {{ rdv.remarques }}
+         </div>
+     </div>
+ </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="container0" style="   max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <h3 style=" color: #333;
+        text-align: center;">المواعيد السابقة</h3>
+        <ul style="  list-style-type: none;
+        padding: 0;">
+            {% for rdv in past_rendezvous %}
+            <li style="margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;">
+     <div style="margin-right: 20px;">
+         <a href="{% url 'delete_nrdvs' rdv.id %}" onclick="return confirm('هل تريد فعلا الحذف ؟')" class="btn btn-danger btn-sm">
+             <i class="fa-solid fa-delete-left"></i>
+         </a>
+         <a href="{% url 'update_nrdv' rdv.id %}" class="btn btn-info btn-sm">
+            <i class="fa-solid fa-pen-to-square"></i>
+        </a>
+     </div>
+     <div style="flex: 1;">
+         <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+             {{ rdv.date|date:"H:i - Y /m /d" }} 
+             <strong style="font-weight: bold; color: #333;">{{ rdv.fullname }}</strong>
+         </div>
+         <div class="appointment-info" style="margin-top: 10px; color: #666; overflow-wrap: break-word;">
+             {{ rdv.remarques }}
+         </div>
+     </div>
+ </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+
+<div id="addrdvModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="POST" action="{% url 'pnrdv' %}">
+                {% csrf_token %}
+                {{ form.errors }}
+                <div class="modal-header" >                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-header"  style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                    <h4 class="modal-title" style="font-size: 18px; color: black; font-weight: bold; margin-left: auto;">إضافة موعد </h4>
+                </div>
+            
+
+               
+                <div class="modal-body">
+                    <div class="input-box" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                        <input class="input1" type="text" placeholder="  لقب و اسم الموكل " id="nomprenom" name="nomprenom" required style="text-align: right; width: 400px;">
+                        <span class="details" style="margin-right: 10px;">: الموكل</span>
+                    </div>
+                    
+
+                    
+                    <div class="input-box" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                        <input class="input1" type="datetime-local" placeholder="  " id="date" name="date" required style="text-align: right; width: 400px;">
+                        <span class="details" style="margin-right: 10px;">: تاريخ وتوقيت</span>
+                    </div>
+                    <div class="textarea" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                        <textarea class="textarea" placeholder=" تفاصيل اخرى" id="remarques" name="remarques" required style="text-align: right; width: 400px;"></textarea>
+                        <span class="details" style="margin-right: 10px;">: ملاحظات</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">الغاء</button>
+                    <input type="submit" class="btn btn-success" value="اضافة">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Print button moved to a new container -->
+
+
+</div>
+
+</body>
+</html>
+
+{% include 'users/footer.html' %}
+
+{% endblock content %}
+
+
+
