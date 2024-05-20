@@ -246,16 +246,6 @@ class Documents(models.Model):
     def __str__(self):
         return self.title
 
-class NotaryClient(models.Model):
-    notary = models.ForeignKey(Notary, on_delete=models.CASCADE, related_name='accepted_clients')
-    user1 = models.ForeignKey(User1, on_delete=models.CASCADE, related_name='notary_clients')
-    date = models.DateField()
-    mobile = models.IntegerField()
-    address = models.CharField(max_length=100)
-    created_at = models.DateTimeField(null=True, blank=True)
-    def __str__(self):
-        return f"{self.notary.user.username} accepts {self.user1.user.username}"
-   
 
 class SubscriptionPlan(models.Model):
     name = models.CharField(max_length=100)
