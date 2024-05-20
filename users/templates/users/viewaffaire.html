@@ -4,17 +4,17 @@
 {% block title %} الصفحة الرئيسية {% endblock title%}
 {% block content %}
 	<!-- Bootstrap -->
-	<link type="text/css" rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
     
 	<!-- Owl Carousel -->
-	<link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.carousel.css' %}" />
-	<link type="text/css" rel="stylesheet" href="{% static 'static/css/owl.theme.default.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'css/owl.theme.default.css' %}" />
 
 	<!-- Magnific Popup -->
-	<link type="text/css" rel="stylesheet" href="{% static 'static/css/magnific-popup.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" />
 
 	<!-- Font Awesome Icon -->
-	<link rel="stylesheet" href="{% static 'static/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
 
 
     <!-- About -->
@@ -254,7 +254,7 @@
 
 	</div>
 <!-- Bootstrap -->
-<link type="text/css" rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}" />
+<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-K5NAXJiBE5P1tJ6lp7BX4ELt3zB8TfANbapVcxC+8iGuL15S0pUbQxvFVtfEQpoRLrnWNG8SGDoNE+9Cbe8FgA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -465,7 +465,7 @@
         </table>
     </div>
 </div>
-<link type="text/css" rel="stylesheet" href="{% static 'static/css/bootstrap.min.css' %}" />
+<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-K5NAXJiBE5P1tJ6lp7BX4ELt3zB8TfANbapVcxC+8iGuL15S0pUbQxvFVtfEQpoRLrnWNG8SGDoNE+9Cbe8FgA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -677,13 +677,13 @@
 				<td data-label="Document File">
                     {% if document.file.name|lower|slice:'-4:' == '.pdf' %}
                         <!-- Display a PDF icon -->
-						{{ document.title }}<img src="{% static 'static/img/pdf.png' %}" alt="PDF Icon" style="width: 20px; height: 20px;">
+						{{ document.title }}<img src="{% static 'img/pdf.png' %}" alt="PDF Icon" style="width: 20px; height: 20px;">
                     {% elif document.file.name|lower|slice:'-5:' == '.doc' or document.file.name|lower|slice:'-5:' == '.docx' %}
                         <!-- Display a Word document icon -->
-						{{ document.title }}  <img src="{% static 'static/img/mot.png' %}" alt="Word Icon"  style="width: 20px; height: 20px;">
+						{{ document.title }}  <img src="{% static 'img/mot.png' %}" alt="Word Icon"  style="width: 20px; height: 20px;">
                     {% else %}
                         <!-- Display a generic file icon for other file types -->
-						{{ document.title }}   <img src=" {% static 'static/img/fichier.png' %} " alt="File Icon"style="width: 20px; height: 20px;">
+						{{ document.title }}   <img src=" {% static 'img/fichier.png' %} " alt="File Icon"style="width: 20px; height: 20px;">
                     {% endif %}
                 </td>
                 
@@ -850,7 +850,7 @@
 
 					<!-- footer logo -->
 					<div class="footer-logo">
-						<a href="index.html"><img src="{% static 'static/img/2.png' %}" alt="logo"></a>
+						<a href="index.html"><img src="{% static 'img/2.png' %}" alt="logo"></a>
 					</div>
 					<!-- /footer logo -->
 
@@ -898,11 +898,11 @@
 	<!-- /Preloader -->
 
 	<!-- jQuery Plugins -->
-	<script type="text/javascript" src="{% static 'static/js/jquery.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'static/js/bootstrap.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'static/js/owl.carousel.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'static/js/jquery.magnific-popup.js' %}"></script>
-	<script type="text/javascript" src="{% static 'static/js/main.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 	
 </body>
 <style>

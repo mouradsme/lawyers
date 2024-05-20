@@ -36,13 +36,13 @@
 				<td data-label="Document File">
                     {% if document.file.name|lower|slice:'-4:' == '.pdf' %}
                         <!-- Display a PDF icon -->
-						{{ document.title }}<img src="{% static 'static/img/pdf.png' %}" alt="PDF Icon" style="width: 20px; height: 20px;">
+						{{ document.title }}<img src="{% static 'img/pdf.png' %}" alt="PDF Icon" style="width: 20px; height: 20px;">
                     {% elif document.file.name|lower|slice:'-5:' == '.doc' or document.file.name|lower|slice:'-5:' == '.docx' %}
                         <!-- Display a Word document icon -->
-						{{ document.title }}  <img src="{% static 'static/img/mot.png' %}" alt="Word Icon"  style="width: 20px; height: 20px;">
+						{{ document.title }}  <img src="{% static 'img/mot.png' %}" alt="Word Icon"  style="width: 20px; height: 20px;">
                     {% else %}
                         <!-- Display a generic file icon for other file types -->
-						{{ document.title }}   <img src=" {% static 'static/img/fichier.png' %} " alt="File Icon"style="width: 20px; height: 20px;">
+						{{ document.title }}   <img src=" {% static 'img/fichier.png' %} " alt="File Icon"style="width: 20px; height: 20px;">
                     {% endif %}
                 </td>
                 
