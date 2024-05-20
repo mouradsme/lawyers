@@ -1754,3 +1754,8 @@ header {
             transform:scale(0);
   }
 }
+
+#preloader {
+    display: none !important;
+    visibility: hidden !important;
+}
